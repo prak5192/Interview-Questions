@@ -1825,11 +1825,8 @@ The following information may be helpful when using DRD:
 8.3.1. Mutex types
 
 The Single UNIX Specification version two defines the following four mutex types (see also the documentation of pthread_mutexattr_settype):
-
     normal, which means that no error checking is performed, and that the mutex is non-recursive.
-
     error checking, which means that the mutex is non-recursive and that error checking is performed.
-
     recursive, which means that a mutex may be locked recursively.
 
     default, which means that error checking behavior is undefined, and that the behavior for recursive locking is also undefined. Or: portable code must neither trigger error conditions through the Pthreads API nor attempt to lock a mutex of default type recursively.
