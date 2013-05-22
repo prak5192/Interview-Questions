@@ -1,0 +1,13 @@
+gdb
+========================================
+1. Gdb does not check boundry condition
+
+
+
+
+
+
+
+valgrind
+========================================
+1. valgrind can check boundry condition (heap check)
