@@ -1,3 +1,7 @@
+/* 
+Program to convert little endian to big endian.
+*/
+
 #include<stdio.h>
 
 
