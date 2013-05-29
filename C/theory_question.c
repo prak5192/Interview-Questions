@@ -139,3 +139,37 @@ string that is 13 characters from the end of source_str. By using the argument
 "%13.13s", the program forces the output to be exactly 13 characters long, and 
 thus the last 13 characters of the string are printed.
 
+===============================================================================
+
+Q. What are storage classes in C?
+Ans. There are following storage classes which can be used in a C Program
+
+    auto -> auto is the default storage class for all local variables.
+
+    register -> register is used to define local variables that should be stored 
+                in a register instead of RAM. This means that the variable has a 
+                maximum size equal to the register size (usually one word) and 
+                cant have the unary '&' operator applied to it (as it does not 
+                have a memory location). This storage class is used for fast access 
+                of the data.
+
+    static -> static is the default storage class for global variables.
+              static variables can be 'seen' within all functions in this source 
+              file. At link time, the static variables defined here will not be seen 
+              by the object modules that are brought in.
+              static can also be defined within a function. If this is done the 
+              variable is initalised at run time but is not reinitalized when the 
+              function is called. This inside a function static variable retains its 
+              value during vairous calls.
+
+    extern -> extern is used to give a reference of a global variable that is visible 
+              to ALL the program files. When you use 'extern' the variable cannot be 
+              initalized as all it does is point the variable name at a storage 
+              location that has been previously defined.
+              When you have multiple files and you define a global variable or function 
+              which will be used in other files also, then extern will be used in another 
+              file to give reference of defined variable or function. Just for 
+              understanding extern is used to decalre a global variable or function in 
+              another files.
+===============================================================================
+
