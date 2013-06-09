@@ -28,7 +28,7 @@ int main(void){
     printf("Big endian:");
     show_mem_rep((char*)&big_endian_num,sizeof(big_endian_num));
 
-    printf("By using htonl() function\n");
+    printf("\nBy using htonl() function\n");
     big_endian_num = htonl(little_endian_num);
     printf("Big endian:");
     show_mem_rep((char*)&big_endian_num,sizeof(big_endian_num));
