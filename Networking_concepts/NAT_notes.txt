@@ -1,0 +1,84 @@
+NAT: (Network Address Translation)
+====================================
+
+IP Version 4
+==================
+32 bit IP address = Aproximately around 4.2 billion IP 
+                    address can be gerarated
+
+Problem:=
+=========
+7 Billion people on earth.
+If even half of people is using suppose 2 devices like phone and 
+one laptop, all the IP provided by the IP version 4 will not be sufficient.
+
+  
+
+A work around for this problem is:
+
+
+
+Phone 
+192.168.42.2   --------------
+                            |  (Public IP)
+                            V (12.13.14.15) 
+Laptop         ----------- Router   ----------(Internet) 
+192.168.42.3          192.168.42.1
+                            ^
+                            |
+Desktop:       -------------
+192.168.42.4
+(Private IP)
+
+
+Two ranges of IP address reserved for Private network
+1. 192.168.XX.XX
+2. 10.XX.XX.XX
+
+
+Internet Packets consits of 
+Src:Port                     Dst:Port
+192.168.42.3:42367         40.30.20.23:80
+
+
+Port 80 is used normally for http request and response.
+
+
+
+When a Laptop sends a packet from private IP(192.168.42.3:23456)  to a
+web server (40.50.60.70:80), Actually The router does NAT functionality for US.
+NAT stands for Network address translation.
+
+
+	    Private IP                    Public Ip                   Web Server
+		192.168.42.1         Router   12.13.14.15                 40.50.60.70
+
+Laptop                        |      
+                              |           
+SRC:Port                      |            SRC:port   
+192.168.42.3:23456            |   12.13.14.15:34566
+              ----------->    |   -------------------->
+Dst:Port                      |            Dst:Port
+40.50.60.70:80                |   40.50.60.70:80
+-----------------------------------------------------------------
+SRC:Port                      |            SRC:port   
+60.50.60.70:80                |   40.50.60.70:80
+              <-----------    |   <--------------------
+Dst:Port                      |            Dst:Port
+4192.168.42.3:2345            |   12.13.14.15:34566
+
+
+The router is maintaining a NAT forwarding table. 
+When ever a packet is coming out of any device from
+private network like laptop, and if its destination is not 
+in the private network, It will update the NAT forwarding table
+and send the packet to the destinationed IP address by changing the
+source IP address from private IP (192.168.42.3) to a public IP address
+which is assigned to it by ISP (12.13.14.15).
+Similary while replying , the webserver will send the packet 
+with destination Ip as the public IP of the router
+so that it can reach to the router. Noe the router will update the
+destination address to the private ip (192.168.42.3) and send it to 
+the device , as it is send from the webserver.
+For a normal User the packets looks like it is send from the web server 
+and not from the router.
