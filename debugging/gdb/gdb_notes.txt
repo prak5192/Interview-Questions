@@ -1,0 +1,103 @@
+===========================================================
+1 How to compile the code:
+===========================================================
+#gcc filename -g
+
+===========================================================
+2. How to run the program using gdb 
+===========================================================
+#gdb a.out
+
+===========================================================
+3. How to examine the core dump
+===========================================================
+#gdb a.out core
+
+===========================================================
+4. If corefile is not generating 
+===========================================================
+The core file size should be not equal to 0,
+Please set it as unlimited with command 
+#check ulimit -a 
+#ulimit -a unlimited
+ 
+===========================================================
+5. The "bt" command 
+===========================================================
+Causes gdb to print out a back-trace of the call stack:
+
+(gdb) bt
+#0  0x164a in bazz (anint=0x5) at temp.c:17
+#1  0xefbfd888 in end ()
+#2  0x162c in main () at temp.c:11
+(gdb)
+
+===========================================================
+6. Attaching to a running program
+===========================================================
+gdb can attach to a program that is already running
+A common problem is when you are stepping through a program
+that forks, and you want to trace the child, but the 
+debugger will only let you trace the parent.
+
+What you do is start up another gdb, use ps to find the 
+process ID for the child, and do
+
+(gdb) attach pid
+
+===========================================================
+7. Listing the lines of the file 
+===========================================================
+
+list                  Lists next few lines of program
+  list <line>           Lists lines around 
+                        line number <line> of program
+  list <start> <end>    Lists line numbers 
+                        <start> through <end>
+  list <func-name>      Lists lines at beginning 
+                        of function <func-name>
+
+===========================================================
+8. Execute until a line number 
+===========================================================
+until <line>          Executes program until line number <line>
+
+===========================================================
+9.Print info of local variables in current stack frame.
+===========================================================
+info locals
+
+===========================================================
+10.Set the value of a local variable
+===========================================================
+set x = 123*56
+
+===========================================================
+11. Info commands for examining runtime and debugger state:
+===========================================================
+
+gdb has a large set of info X commands for displaying 
+information about different types of runtime state and 
+about debugger state. Here is how to list all the info 
+commands in help, and a description of what a few of 
+the info commands do:
+(gdb) help status           # lists a bunch of 
+                              info X commands
+(gdb) info frame            # list information about 
+                              the current stack frame
+(gdb) info locals           # list local variable 
+                              values of current stack frame
+(gdb) info args             # list argument values of 
+                              current stack frame
+(gdb) info registers        # list register values
+(gdb) info breakpoints      # list status of all  
+                              breakpoints
+
+===========================================================
+12. Thread related commands
+===========================================================
+
+#thread threadno., a command to switch among threads
+#info threads., a command to inquire about existing threads
+(gdb) info threads
+(gdb) thread 1
