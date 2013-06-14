@@ -1,3 +1,10 @@
+#if 0
+
+http://cboard.cprogramming.com/c-programming/117911-sorted-linked-list.html
+
+#endif
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
