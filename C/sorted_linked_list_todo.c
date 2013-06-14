@@ -32,10 +32,10 @@ void Menu()
 person* CreatePerson()
 {
     person *new = malloc(sizeof(person));
-    char name[10];
+    char name[20];
      
     printf("\nEnter name: ");
-    scanf("%s", name);
+    fgets(name,sizeof(name), stdin);
     strcpy(new->name, name);
     printf("Enter age: ");
     scanf("%d",&new->age);                                       
@@ -92,14 +92,13 @@ void Print(person **head)
     printf("\n");
 }
  
- 
- 
+
 /* SORTED INPUT*/
-void SortedInsert(person **head, person **o)
+void SortedInsert(person **head, person *o)
 {
     person *temp = *head;
-    person  *new = *o;
-     
+    person  *new = o;
+    
     if (*head == NULL)
     {
         *head = new;
@@ -120,11 +119,9 @@ void SortedInsert(person **head, person **o)
             }
             new->next = temp->next;
             temp->next = new;
-        }  
+        }   
     }
 }
-
-
 
 /* SORT THE LIST*/
 void SortList(person **head)
@@ -145,8 +142,8 @@ void SortList(person **head)
     }
     printf("SORTED LIST:\n");
     Print(&head1);
-} 
- 
+}
+
  
 /* MAIN*/
 int main (int argc, const char * argv[])
