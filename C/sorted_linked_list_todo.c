@@ -8,56 +8,39 @@ http://cboard.cprogramming.com/c-programming/117911-sorted-linked-list.html
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+
  
 /* DEFINE NODE*/
 typedef struct node
-    {
-        int age;
-        char name[10];
-        struct node *next;
-    } person;
- 
-/* DEFINE MENU*/
-void Menu()
 {
-    printf("\n***\tMENU\t***\n");
-    printf("\n 1.) Insert");
-    printf("\n 2.) Print");
-    printf("\n 3.) Sort");
-    printf("\n 0.) EXIT");
-    printf("\nChoose ---------> "); 
-}
- 
-/* CREATE A NEW PERSON*/
-person* CreatePerson()
-{
-    person *new = malloc(sizeof(person));
-    char name[20];
-     
-    printf("\nEnter name: ");
-    fgets(name,sizeof(name), stdin);
-    strcpy(new->name, name);
-    printf("Enter age: ");
-    scanf("%d",&new->age);                                       
-     
-    new->next = NULL;                                            
-     
-    return(new);                                            
-}
- 
+    int age;
+    char name[10];
+    struct node *next;
+} person;
  
  
 /* INPUTING A NODE INTO THE LIST*/
 void Insert(person **head)
 {
-    person *new = malloc(sizeof(person));
-    char name[10];
-     
-    printf("\nEnter name: ");
-    scanf("%s", name);
+    person *new;
+    char name[20];
+    new = malloc(sizeof(person));
+    memset(name, 0, sizeof(name));
+    printf("\nEnter name:\n");
+	fflush(stdin);
+	fflush(stdout);
+	fgets(name, 20, stdin);
+    printf("Name entered: %s\n",name);
+	fflush(stdin);
+	fflush(stdout);
     strcpy(new-> name, name);
     printf("Enter age: ");
+	fflush(stdin);
+	fflush(stdout);
     scanf("%d",&new->age);
+	fflush(stdin);
+	fflush(stdout);
      
     if (*head == NULL)
     {
@@ -97,7 +80,7 @@ void Print(person **head)
 void SortedInsert(person **head, person *o)
 {
     person *temp = *head;
-    person  *new = o;
+    person *new = o;
     
     if (*head == NULL)
     {
@@ -119,7 +102,7 @@ void SortedInsert(person **head, person *o)
             }
             new->next = temp->next;
             temp->next = new;
-        }   
+        }
     }
 }
 
@@ -153,7 +136,13 @@ int main (int argc, const char * argv[])
      
     do
     {
-        Menu();
+	    printf("\n***\tMENU\t***\n");
+    	printf("\n 1.) Insert");
+    	printf("\n 2.) Print");
+    	printf("\n 3.) Sort");
+    	printf("\n 0.) EXIT");
+    	printf("\nChoose ---------> ");
+
         scanf("%d",&choice);
         switch (choice)
         {
