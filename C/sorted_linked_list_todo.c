@@ -10,12 +10,13 @@ http://cboard.cprogramming.com/c-programming/117911-sorted-linked-list.html
 #include <string.h>
 #include <unistd.h>
 
+#define MAX_CHAR 20
  
 /* DEFINE NODE*/
 typedef struct node
 {
     int age;
-    char name[10];
+    char name[MAX_CHAR];
     struct node *next;
 } person;
  
@@ -24,24 +25,31 @@ typedef struct node
 void Insert(person **head)
 {
     person *new;
-    char name[20];
     new = malloc(sizeof(person));
+    int i = 0; 
+    char dummy_char;
+    char name[20];
+    int c;
     memset(name, 0, sizeof(name));
+    
     printf("\nEnter name:\n");
-	fflush(stdin);
-	fflush(stdout);
-	fgets(name, 20, stdin);
+    scanf("%c",&dummy_char);
+    while ((c = getchar()) != '\n' && c != EOF){
+        name[i] = c;
+        i++;
+        if(i == (MAX_CHAR -1) ){
+            printf("Inside break statement i = %d\n", i);
+            name[i] = '\0';
+            while ((c = getchar()) != '\n' && c != EOF);
+            break;
+        }
+        printf("i = %d\n", i);
+    }
     printf("Name entered: %s\n",name);
-	fflush(stdin);
-	fflush(stdout);
-    strcpy(new-> name, name);
+    memcpy(new->name , name, MAX_CHAR); 
     printf("Enter age: ");
-	fflush(stdin);
-	fflush(stdout);
     scanf("%d",&new->age);
-	fflush(stdin);
-	fflush(stdout);
-     
+    scanf("%c",&dummy_char);
     if (*head == NULL)
     {
         *head = new;
@@ -51,7 +59,7 @@ void Insert(person **head)
     {
         new->next = *head;
         *head = new;
-    }
+   }
 }
  
  
@@ -155,6 +163,8 @@ int main (int argc, const char * argv[])
             case 3:
                 SortList(&head);
                 break;
+            case 0:
+                exit(0);
             default:
                 printf("\nWRONG CHOICE");
         }
