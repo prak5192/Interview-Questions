@@ -118,11 +118,10 @@ void SortList(person **head)
     person *current = *head;
     person *next;
     
-    if (current == NULL) printf("List empty! Nothing to sort!");
-    else
-    {
-        while (current != NULL)
-        {
+    if (current == NULL){
+        printf("List empty! Nothing to sort!");
+    } else {
+        while (current != NULL) {
             next = current->next;
             SortedInsert(&head1,current);
             current = next;
