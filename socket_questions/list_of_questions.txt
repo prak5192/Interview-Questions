@@ -209,3 +209,42 @@ Sol:
 ► What is File Descriptors and Sockets?
 ► What is Client Connect?
 ► What is Server Applications?
+
+
+
+Poject Description:
+===================
+Develop TCP/IP client/server programs to simulate the full-duplex stop-and-wait
+data link protocol:
+
+1. Write a connection-oriented File Server (FS) program to do the following:
+
+        a. Print the FS address (hostname, port_number, server name) on the screen.
+        b. Accept a connection request from the client.
+        c. Fork/Create a child process/thread to process the client request:
+           Receive the file uploaded from the client in a number of data frames using the 
+           stop-and-wait protocol with Positive and Negative acknowledgment.
+           FRAME data structure used should be the same as your previous assignment.
+
+
+2. Write a client program to do the following:
+
+        a. Connect to the FS server using the FS address printed on the server screen.
+        b. Upload an image file to the FS server simulating the stop-and-wait protocol
+           with Positive and Negative acknowledgment. Simulate the transmission errors 
+           by using random number generating function.
+           (Optional: To decelop a full-duplex TCP connection on the client side so that 
+           it can send data packets and read acknowledgement at the same time by two 
+           different processes/threads.)
+
+Protocol specifications:
+
+        a. Client and FS server communication should use the TCP/IP connection-oriented service.
+           The FRAME data size is limited to 1024-byte and 1-bit sending window size should be used.
+           You should use the sleep() function to simulate the transmission delay and message rate.
+        b. FS server must be a multi-process/multi-thread program to be able to serve multiple clients.
+        c. Assume the Data frames have 20% transmission errors, but they will not be lost.
+           Short ACK/NACK frames will not have transmission errors.
+           (Therefore no timer is needed to simulate this protocol.)
+        d. Using a random number generator (rand(...)) to simulate the transmission errors.
+

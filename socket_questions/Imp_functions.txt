@@ -1,0 +1,161 @@
+Functions and structures related to scoket
+============================================
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<sys/types.h>
+#include<sys/socket.h>
+#include<unistd.h>
+#include<errno.h>
+#include<arpa/inet.h>
+#include<string.h>
+
+Server:
+=======
+            int socket(int domain, int type, int protocol)
+            Socket((AF_INET, SOCK_STREAM, IPPROTO_TCP)
+            On success, a file descriptor for the new socket is returned.
+            On error, -1 is returned
+            
+              |
+              V
+            int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+            bind(socketfd, (struct sockaddr *)&server, sizeof(struct sockaddr))
+            On success, zero is returned.  On error, -1 is returned.
+              |
+              V
+            int listen(int sockfd, int backlog);
+            listen(socketfd, 5)   // http://stackoverflow.com/questions/12893379/listen-queue-length-in-socket-programing-in-c
+            On success, zero is returned.  On error, -1 is returned
+              |
+              V
+            int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+            accept(socketfd,( struct sockaddr *)&server,&len)
+            On success, these system calls return a nonnegative 
+            integer that is a descriptor for the accepted socket.  
+            On error, -1 is return
+              |
+              V
+            ssize_t send(int sockfd, const void *buf, size_t len, int flags)
+            send(connectfd, buff, sizeof(buff), 0);
+            On success, these calls return the number of characters sent.  
+            On error, -1 is returned
+              or
+            ssize_t recv(int sockfd, void *buf, size_t len, int flags);
+            recv(sockfd, buff,sizeof(buff),0);
+            These calls return the number of bytes received, or -1 if an error occurred.
+              |
+              V
+            int close(int fd);
+            close(socketfd);  
+            close() returns zero on success.  
+            On error, -1 is returned
+
+
+Client:
+=======
+            socket(AF_INET, SOCK_STREAM,0);
+              |
+              V
+            int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+            connect(sockfd, (struct sockaddr *)&server, len);
+            If the connection or binding succeeds, zero is returned.  On error, -1 is returned.
+              |
+              V
+            recv(sockfd, buff,sizeof(buff),0);
+              or
+            send(connectfd, buff, sizeof(buff), 0);
+              |
+              V
+            close(sockfd);
+
+
+===============================================================================
+structures and other functions used in socket programming
+===============================================================================
+
+======================
+1. Struct sockaddr_in
+======================
+    #include <netinet/in.h>
+
+    struct sockaddr_in {
+        short            sin_family;   // e.g. AF_INET
+        unsigned short   sin_port;     // e.g. htons(3490)
+        struct in_addr   sin_addr;     // see struct in_addr, below
+        char             sin_zero[8];  // zero this if you want to
+    };
+
+    struct in_addr {
+        unsigned long s_addr;  // load with inet_aton()
+    };
+
+    For example:
+        struct sockaddr_in myaddr;
+        int s;
+
+        myaddr.sin_family = AF_INET;
+        myaddr.sin_port = htons(3490);
+        inet_aton("63.161.169.137", &myaddr.sin_addr.s_addr);
+
+        s = socket(PF_INET, SOCK_STREAM, 0);
+        bind(s, (struct sockaddr*)myaddr, sizeof(myaddr));
+
+================
+2. struct iphdr
+================
+    #include <ip.h>        
+
+    struct iphdr {
+        #if defined(__LITTLE_ENDIAN_BITFIELD)
+             __u8    ihl:4,
+             version:4;
+        #elif defined (__BIG_ENDIAN_BITFIELD)
+             __u8    version:4,
+            ihl:4;
+        #else
+            #error  "Please fix <asm/byteorder.h>"
+        #endif
+         __u8    tos;
+         __u16   tot_len;
+         __u16   id;
+         __u16   frag_off;
+         __u8    ttl;
+         __u8    protocol;
+         __u16   check;
+         __u32   saddr;
+         __u32   daddr;
+         /*The options start here. */
+ };
+
+=============================================================================
+3. Conversion of different types of number notation in network programming.
+=============================================================================
+    uint32_t htonl(uint32_t hostlong);
+    uint16_t htons(uint16_t hostshort);
+    uint32_t ntohl(uint32_t netlong);
+    uint16_t ntohs(uint16_t netshort);
+
+    To manupulate IP address.
+    1. int inet_aton(const char *cp, struct in_addr *inp); /* Assci to network */
+       Sample usage:
+            struct sockaddr_in my_addr;    /* host byte order */
+            my_addr.sin_family = AF_INET;  /* short, network byte order */
+            my_addr.sin_port = htons(MYPORT);
+            inet_aton("10.12.110.57", &(my_addr.sin_addr));
+            /* zero the rest of the struct */
+            memset(&(my_addr.sin_zero), 0, 8);
+
+
+    2. in_addr_t inet_addr(const char *cp);
+        Sample usage:
+            struct sockaddr_in  my_addr;
+            my_addr.sin_addr.s_addr = inet_addr("192.168.42.1");
+        NOTE: No error checking mechanism is available in inet_addr function.
+        So usage of inet_aton() function is more appropiate.
+
+    3. char *inet_ntoa(struct in_addr in); /* Network to assci */
+        Sample usage:
+            printf("%s", inet_ntoa(ina.sin_addr));
+        
+=============================================================================
