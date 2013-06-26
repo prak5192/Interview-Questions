@@ -1,21 +1,112 @@
-01 ► What Is Socket?
-02 ► How does the race condition occur?
-03 ► What is multiprogramming?
-04 ► Name the seven layers of the OSI Model and describe them briefly?
-05 ► What is the difference between TCP and UDP?
-06 ► What does a socket consists of?
-07 ► What is a JavaBean?
-08 ► What are the seven layers(OSI model) of networking?
-09 ► What are some advantages and disadvantages of Java Sockets?
-10 ► What is the difference between a NULL pointer and a void pointer?
-11 ► What is encapsulation technique?
-12 ► Socket Programming Interview Questions
-    01. User(s) are complaining of delays when using the network. What would you do?
+================================================================================
+► What Is Socket?
+Sol:
+    A network socket is an endpoint of an inter-process communication 
+flow across a computer network. Today, most communication between computers 
+is based on the Internet Protocol; therefore most network sockets are Internet 
+sockets.
+
+A socket API is an application programming interface (API), usually provided 
+by the operating system, that allows application programs to control and use 
+network sockets. Internet socket APIs are usually based on the Berkeley sockets 
+standard.
+
+A socket address is the combination of an IP address and a port number, much 
+like one end of a telephone connection is the combination of a phone number 
+and a particular extension. Based on this address, internet sockets deliver 
+incoming data packets to the appropriate application process or thread.
+
+It is important to note that these sockets are software, not hardware, like a 
+wall socket. So, yes, you have a much greater chance of being shocked by a 
+wall socket than by a networking socket.
+================================================================================
+► How does the race condition occur?
+Sol:
+    It occurs when two or more processes are reading or writing some shared 
+data and the final result depends on who runs precisely when.
+================================================================================
+► What is multiprogramming?
+Sol:
+    Multiprogramming is a rudimentary form of parallel processing in which 
+several programs are run at the same time on a uniprocessor. Since there is 
+only one processor , there can be no true simultaneous execution of different 
+programs. Instead, the operating system executes part of one program, then 
+part of another, and so on. To the user it appears that all programs are 
+executing at the same time.
+
+If the machine has the capability of causing an interrupt after a specified 
+time interval, then the operating system will execute each program for a 
+given length of time, regain control, and then execute another program 
+for a given length of time, and so on. In the absence of this mechanism, 
+the operating system has no choice but to begin to execute a program with 
+the expectation, but not the certainty, that the program will eventually 
+return control to the operating system.
+
+If the machine has the capability of protecting memory , then a bug in one 
+program is less likely to interfere with the execution of other programs. 
+In a system without memory protection, one program can change the contents 
+of storage assigned to other programs or even the storage assigned to the 
+operating system. The resulting system crashes are not only disruptive, 
+they may be very difficult to debug since it may not be obvious which 
+of several programs is at fault.
+================================================================================
+► Name the seven layers of the OSI Model and describe them briefly?
+Sol:
+    Physical Layer - covers the physical interface between devices and the 
+rules by which bits are passed from one to another.
+
+Data Link Layer - attempts o make the physical link reliable and provides the 
+means to activate, maintain, and deactivate the link.
+
+Network Layer - provides for the transfer of information between end systems 
+across some sort communications network.
+
+Transport Layer - provides a mechanism for the exchange of data between end 
+system.
+
+Session Layer - provides the mechanism for controlling the dialogue between 
+applications in end systems.
+
+Presentation Layer - defines the format of the data to be exchanged between 
+applications and offers application programs a set of data transformation 
+services.
+
+Application Layer - provides a means for application programs to access the 
+OSI environment. 
+================================================================================
+► What is the difference between TCP and UDP?
+Sol:
+    TCP and UDP are both transport-level protocols. TCP is designed to 
+provide reliable communication across a variety of reliable and unreliable 
+networks and internets.
+
+UDP provides a connectionless service for application-level procedures. 
+Thus, UDP is basically an unreliable service; delivery and duplicate protection 
+are not guareented. 
+================================================================================
+► What does a socket consists of?
+Sol:
+    The combination of an IP address and a port number is called a socket. 
+================================================================================
+► What is the difference between a NULL pointer and a void pointer?
+Sol:
+    A NULL pointer is a pointer of any type whose value is zero. A void 
+pointer is a pointer to an object of an unknown type, and is guaranteed to 
+have enough bits to hold a pointer to any object. A void pointer is not 
+guaranteed to have enough bits to point to a function (though in general 
+practice it does). 
+================================================================================
+►  Socket Programming Interview Questions
+Sol:
+    01. User(s) are complaining of delays when using the network. What 
+        would you do?
     02. What are some of the problems associated with operating a switched LAN?
-    03. Name some of the ways of combining TCP/IP traffic and SNA traffic over the same link.
+    03. Name some of the ways of combining TCP/IP traffic and SNA traffic 
+        over the same link.
     04. What sort of cabling is suitable for Fast Ethernet protocols?
     05. What is a Class D IP address?
-    06. Why do I sometimes lose a server's address when using more than one server?
+    06. Why do I sometimes lose a server's address when using more than 
+        one server?
     07. What is Firewall?
     08. How do I monitor the activity of sockets?
     09. How would I put my socket in non-blocking mode?
@@ -49,53 +140,72 @@
     37. Find web visitors by country
     38. What is Virtual Private Network (VPN) and how does it work?
     39. How does routing work? 
-13 ► How do I open a socket?
-14 ► How do I create an input stream?
-15 ► How do I create an output stream?
-16 ► How do I close sockets?
-17 ► Explain simple mail transfer protocol?
-18 ► Explain simple Echo server?
-19 ► What is Socket Programming?
-20 ► What this function socketpair() does?
-21 ► What this function socket() does?
-22 ► What this function bind() does?
-23 ► What this function connect() does?
-24 ► What this function sendto() does?
-25 ► What this function recvfrom() does?
-26 ► How to disposing of a Socket?
-27 ► How Sockets can be used to write client-server applications using a connection-oriented client-server technique?
-28 ► How to make a Socket a Listen-only Connection Endpoint - listen()?
-29 ► Explain Connection Establishment by Server - accept()?
-30 ► Explain Data Transfer over Connected Sockets - send() and recv()?
-31 ► Explain with a Connection-Oriented Example - listen(), accept()?
-32 ► What is the IP Address?
-33 ► What is Network Host Names?
-34 ► What is the /etc/hosts File?
-35 ► How to Selecte a Service Port?
-36 ► How to Put a Host Program Address Together?
-37 ► How to finding a Machine Address?
-38 ► Explain Routines for converting data between a hosts internal representation and Network Byte Order?
-39 ► Explain Network Address Conversion Routines?
-40 ► Socket Programming in C using TCP with Code?
-41 ► RMI vs. Sockets and Object Serialization
-42 ► Explain How to transport your own custom objects?
-43 ► Explain How does the client receives the object and prints the date?
-44 ► Explain A multi-threaded DateServe that listens on port 3000 and waits for requests from clients?
-45 ► How to write a class that reads the objects that have been saved, and invokes a method?
-46 ► How to create a class that creates a instance of the UserInfo class and writes the object to an output stream?
-47 ► How to serialize a custom class?
-48 ► Shows how to read a serialized object and print its information?
-49 ► Shows how to save a Date object to a file?
-50 ► Overview of Object Serialization
-51 ► Explain How do sockets work?
-52 ► Explain what is a socket?
-53 ► What are basic functions of network programming interface?
-54 ► What is Whois Client?
-55 ► How to run the WHOIS Daemon?
-56 ► What is Whois Daemon?
-57 ► What is Inetd Services?
-58 ► How do we get a process bound behind a port?
-59 ► What is Socket Addressing?
-60 ► What is File Descriptors and Sockets?
-61 ► What is Client Connect?
-62 ► What is Server Applications?
+================================================================================
+► How do I open a socket?
+Sol:
+    Using socket api
+        socket(int domain, int type, int protocol);
+    eg: socket(AF_INET, SOCK_STREAM, 0);
+================================================================================
+► How do I create an input stream?
+Sol:
+    Using read, recvfrom, recvmsg, recv Api
+    ssize_t read(int fd, void *buf, size_t count)
+    ssize_t recv(int sockfd, void *buf, size_t len, int flags)
+    ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags)
+    ssize_t recvmsg(int sockfd, struct msghdr *msg, int flags)
+================================================================================
+► How do I create an output stream?
+Sol:
+    Using write, send, sendto, sendmsg API
+    ssize_t write(int fd, const void *buf, size_t count)
+    ssize_t send(int sockfd, const void *buf, size_t len, int flags,
+                 const struct sockaddr *dest_addr, socklen_t addrlen)
+    ssize_t sendmsg(int sockfd, const struct msghdr *msg, int flags);
+================================================================================
+    
+► How do I close sockets?
+Sol:
+    Using close, shutdown API
+    int close(int fd)
+    int shutdown(int sockfd, int how)
+================================================================================
+► Explain simple mail transfer protocol?
+► Explain simple Echo server?
+► What this function socketpair() does?
+► What this function socket() does?
+► What this function bind() does?
+► What this function connect() does?
+► What this function sendto() does?
+► What this function recvfrom() does?
+► How to disposing of a Socket?
+► How Sockets can be used to write client-server applications using a connection-oriented client-server technique?
+► How to make a Socket a Listen-only Connection Endpoint - listen()?
+► Explain Connection Establishment by Server - accept()?
+► Explain Data Transfer over Connected Sockets - send() and recv()?
+► Explain with a Connection-Oriented Example - listen(), accept()?
+► What is the IP Address?
+► What is Network Host Names?
+► What is the /etc/hosts File?
+► How to Selecte a Service Port?
+► How to Put a Host Program Address Together?
+► How to finding a Machine Address?
+► Explain Routines for converting data between a hosts internal representation and Network Byte Order?
+► Explain Network Address Conversion Routines?
+► RMI vs. Sockets and Object Serialization
+► Explain How does the client receives the object and prints the date?
+► Explain A multi-threaded DateServe that listens on port 3000 and 
+  waits for requests from clients?
+► Shows how to read a serialized object and print its information?
+► Shows how to save a Date object to a file?
+► Explain How do sockets work?
+► What are basic functions of network programming interface?
+► What is Whois Client?
+► How to run the WHOIS Daemon?
+► What is Whois Daemon?
+► What is Inetd Services?
+► How do we get a process bound behind a port?
+► What is Socket Addressing?
+► What is File Descriptors and Sockets?
+► What is Client Connect?
+► What is Server Applications?
