@@ -91,18 +91,12 @@ void SortedInsert(person **head, person *o)
     {
         *head = new;
         new->next = NULL;
-    }
-    else
-    {
-        if (new->age < temp->age)
-        {
+    } else {
+        if (new->age < temp->age) {
             new->next = temp;
             *head = new;
-        }
-        else
-        {
-            while (temp->next != NULL && temp->next->age < new->age)
-            {
+        } else {
+            while (temp->next != NULL && temp->next->age < new->age) {
                 temp = temp->next;
             }
             new->next = temp->next;
@@ -120,6 +114,7 @@ void SortList(person **head)
     
     if (current == NULL){
         printf("List empty! Nothing to sort!");
+        return;
     } else {
         while (current != NULL) {
             next = current->next;
