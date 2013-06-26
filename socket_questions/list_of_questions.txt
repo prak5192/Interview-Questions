@@ -1,0 +1,101 @@
+01 ► What Is Socket?
+02 ► How does the race condition occur?
+03 ► What is multiprogramming?
+04 ► Name the seven layers of the OSI Model and describe them briefly?
+05 ► What is the difference between TCP and UDP?
+06 ► What does a socket consists of?
+07 ► What is a JavaBean?
+08 ► What are the seven layers(OSI model) of networking?
+09 ► What are some advantages and disadvantages of Java Sockets?
+10 ► What is the difference between a NULL pointer and a void pointer?
+11 ► What is encapsulation technique?
+12 ► Socket Programming Interview Questions
+    01. User(s) are complaining of delays when using the network. What would you do?
+    02. What are some of the problems associated with operating a switched LAN?
+    03. Name some of the ways of combining TCP/IP traffic and SNA traffic over the same link.
+    04. What sort of cabling is suitable for Fast Ethernet protocols?
+    05. What is a Class D IP address?
+    06. Why do I sometimes lose a server's address when using more than one server?
+    07. What is Firewall?
+    08. How do I monitor the activity of sockets?
+    09. How would I put my socket in non-blocking mode?
+    10. What are RAW sockets?
+    11. What is the role of TCP protocol and IP protocol.
+    12. What is UDP?
+    13. How can I make my server a daemon?
+    14. How should I choose a port number for my server?
+    15. Layers in TCP/IP
+    16. How can I be sure that a UDP message is received?
+    17. How to get IP header of a UDP message
+    18. Writing UDP/SOCK_DGRAM applications
+    19. How many bytes in an IPX network address?
+    20. What is the difference between MUTEX and Semaphore?
+    21. What is priority inversion?
+    22. Different Solutions to dining philosophers problem.
+    23. What is a message queue?
+    24. Questions on Shared Memory.
+    25. What is DHCP?
+    26. Working of ping, telnet, gopher.
+    27. Can I connect two computers to internet using same line ?
+    28. Working of TCP and SSL Handshake
+    29. How P2P softwares work?
+    30. Setting up TOMCAT web service
+    31. Port numbers for FTP, HTTP, telnet, POP, finger
+    32. Difference - Passive FTP, Active FTP
+    33. Maximum Transmission Unit (MTU) what is it?
+    34. Security threats due to use of CGI
+    35. What is "spoofing"
+    36. Where could you find Apache server web log
+    37. Find web visitors by country
+    38. What is Virtual Private Network (VPN) and how does it work?
+    39. How does routing work? 
+13 ► How do I open a socket?
+14 ► How do I create an input stream?
+15 ► How do I create an output stream?
+16 ► How do I close sockets?
+17 ► Explain simple mail transfer protocol?
+18 ► Explain simple Echo server?
+19 ► What is Socket Programming?
+20 ► What this function socketpair() does?
+21 ► What this function socket() does?
+22 ► What this function bind() does?
+23 ► What this function connect() does?
+24 ► What this function sendto() does?
+25 ► What this function recvfrom() does?
+26 ► How to disposing of a Socket?
+27 ► How Sockets can be used to write client-server applications using a connection-oriented client-server technique?
+28 ► How to make a Socket a Listen-only Connection Endpoint - listen()?
+29 ► Explain Connection Establishment by Server - accept()?
+30 ► Explain Data Transfer over Connected Sockets - send() and recv()?
+31 ► Explain with a Connection-Oriented Example - listen(), accept()?
+32 ► What is the IP Address?
+33 ► What is Network Host Names?
+34 ► What is the /etc/hosts File?
+35 ► How to Selecte a Service Port?
+36 ► How to Put a Host Program Address Together?
+37 ► How to finding a Machine Address?
+38 ► Explain Routines for converting data between a hosts internal representation and Network Byte Order?
+39 ► Explain Network Address Conversion Routines?
+40 ► Socket Programming in C using TCP with Code?
+41 ► RMI vs. Sockets and Object Serialization
+42 ► Explain How to transport your own custom objects?
+43 ► Explain How does the client receives the object and prints the date?
+44 ► Explain A multi-threaded DateServe that listens on port 3000 and waits for requests from clients?
+45 ► How to write a class that reads the objects that have been saved, and invokes a method?
+46 ► How to create a class that creates a instance of the UserInfo class and writes the object to an output stream?
+47 ► How to serialize a custom class?
+48 ► Shows how to read a serialized object and print its information?
+49 ► Shows how to save a Date object to a file?
+50 ► Overview of Object Serialization
+51 ► Explain How do sockets work?
+52 ► Explain what is a socket?
+53 ► What are basic functions of network programming interface?
+54 ► What is Whois Client?
+55 ► How to run the WHOIS Daemon?
+56 ► What is Whois Daemon?
+57 ► What is Inetd Services?
+58 ► How do we get a process bound behind a port?
+59 ► What is Socket Addressing?
+60 ► What is File Descriptors and Sockets?
+61 ► What is Client Connect?
+62 ► What is Server Applications?
