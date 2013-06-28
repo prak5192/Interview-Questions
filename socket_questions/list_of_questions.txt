@@ -1,3 +1,36 @@
+► Explain TIME_WAIT state in TCP connection.
+Sol:
+    The device receiving the initial FIN may have to wait a fairly long 
+time (in networking terms) in the CLOSE-WAIT state for the application 
+it is serving to indicate that it is ready to shut down. TCP cannot make 
+any assumptions about how long this will take. During this period of 
+time, the server in our example above may continue sending data, and 
+the client will receive it. However, the client will not send data to 
+the server.
+
+Eventually, the second device (the server in our example) will send a 
+FIN to close its end of the connection. The device that originally 
+initiated the close (the client above) will send an ACK for this FIN. 
+However, the client cannot immediately go to the CLOSED state right 
+after sending that ACK. The reason is that it must allow time for the 
+ACK to travel to the server. Normally this will be quick, but delays 
+might result in it being slowed down somewhat.
+
+The TIME-WAIT state is required for two main reasons. The first is to 
+provide enough time to ensure that the ACK is received by the other 
+device, and to retransmit it if it is lost. The second is to provide 
+a “buffering period” between the end of this connection and any 
+subsequent ones. If not for this period, it is possible that packets 
+from different connections could be mixed, creating confusion.
+
+The standard specifies that the client should wait double a particular 
+length of time called the maximum segment lifetime (MSL) before 
+finishing the close of the connection. The TCP standard defines 
+MSL as being a value of 120 seconds (2 minutes). In modern networks 
+this is an eternity, so TCP allows implementations to choose a lower 
+value if it is believed that will lead to better operation.
+
+
 ================================================================================
 ► What Is Socket?
 Sol:
