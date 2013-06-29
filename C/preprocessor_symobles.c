@@ -2,6 +2,15 @@
 
 /* Work as concatening the two variable X and Y */
 
+/* 
+
+The ## in # ## # acts like an escape sequence in this expression. 
+It concatenates the leftmost and the rightmost # to finally produce 
+the token ##. Simply defining the macro as ## would cause an error 
+since the concatenation operator expects two operands.
+
+*/
+
 #define hash_hash # ## #
 #define mkstr(a) # a
 #define in_between(a) mkstr(a)
