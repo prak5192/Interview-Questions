@@ -1,3 +1,11 @@
+► Explain the tcp windowing concept.
+Sol:
+    TCP windowing concept is primarily used to avoid congestion 
+in the traffic. It controls the amount of unacknowledged data a 
+sender can send before it gets an acknowledgement back from the 
+receiver that it has received it.
+
+================================================================================
 ► Explain TIME_WAIT state in TCP connection.
 Sol:
     The device receiving the initial FIN may have to wait a fairly long 
