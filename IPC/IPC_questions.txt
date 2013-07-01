@@ -1,0 +1,137 @@
+Link:
+    http://174.37.163.146-static.reverse.softlayer.com/ipc/ipc-interview-questions.asp
+
+==============================================================================
+► What is the major advantage of a hash table? 
+Sol:
+    The major advantage of a hash table is its speed. Because the 
+hash function is to take a range of key values and transform them 
+into index values in such a way that the key values are distributed 
+randomly across all the indices of a hash table.
+==============================================================================
+► What are the techniques that you use to handle the collisions 
+in hash tables?
+==============================================================================
+► In Unix OS, what is the file server?
+==============================================================================
+► What is NFS? What is its job?
+
+==============================================================================
+► What are the process states in Unix?
+Sol:
+    As a process executes it changes state according to its 
+circumstances. Unix processes have the following states:
+1. Running : The process is either running or it is ready to run .
+2. Waiting/Blocked : The process is waiting for an event or for a resource.
+3. Stopped : The process has been stopped, usually by receiving 
+             a signal.
+4. Zombie  : The process is dead but have not been removed from the 
+            process table.
+
+==============================================================================
+► What is a zombie?
+Sol:
+    When a program forks and the child finishes before the parent, 
+the kernel still keeps some of its information about the child in 
+case the parent might need it - for example, the parent may need to 
+check the child's exit status. To be able to get this information, 
+the parent calls `wait()'; In the interval between the child 
+terminating and the parent calling `wait()', the child is said to be 
+a `zombie' (If you do `ps', the child will have a `Z' in its status 
+field to indicate this.)
+
+==============================================================================
+► How can a parent and child process communicate?
+Sol:
+    using interprocess communication like:
+    1. Pipes. 
+    2. Message queue.
+    3. Shared memory.
+    4. Semaphores.
+    5. Sockets.
+    6. By creating there own globle queue.
+==============================================================================
+► How can you get/set an environment variable from a program?
+Sol:
+    Getting the value of an environment variable is done by using `getenv()'.
+    char *getenv(const char *name);
+    Setting the value of an environment variable is done by using `putenv()'.
+    int putenv(char *string);
+
+==============================================================================
+► List the system calls used for process management:
+Sol:
+    System calls Description
+1. fork() To create a new process
+2. exec() To execute a new program in a process
+3. wait() To wait until a created process completes its execution
+4. exit() To exit from a process execution
+5. getpid() To get a process identifier of the current process
+6. getppid() To get parent process identifier
+7. nice() To bias the existing priority of a process
+8. brk() To increase/decrease the data segment size of a process
+==============================================================================
+► Predict the output of the following program code 
+    main() { 
+        fork(); 
+        fork(); 
+        fork(); 
+        printf("Hello World!"); 
+    }
+Sol:
+    It will print "Hello world" 8 times.
+==============================================================================
+► Predict the output of the following program code main() { fork(); printf("Hello World!"); }
+==============================================================================
+► Explain fork() system call.
+==============================================================================
+► What are various IDs associated with a process?
+==============================================================================
+► Brief about the initial process sequence while the system boots up.?
+==============================================================================
+► How shared memory are accessed if we have two processors?
+==============================================================================
+► Which tool would you use to update Debian / Slackware /
+==============================================================================
+► Which distro you prefer?
+==============================================================================
+► Why do we have serial and parallel interface?
+==============================================================================
+► Which Linux distros do you have experience with ?
+==============================================================================
+► What are the Advantages and disadvantages of script?
+==============================================================================
+► What does route command do?
+==============================================================================
+► What is symbolic link in unix ?
+==============================================================================
+► Which is the fastest IPC mechanism and why ?
+==============================================================================
+► List the known facilities for interprocess communication in Linux?
+==============================================================================
+► What are the two models of interprocess communication what are the strengths and weaknesses of the two approaches?
+==============================================================================
+► Explain difference between IPC mechanisms?
+==============================================================================
+► What is IPC? What are the various schemes available?
+==============================================================================
+► How shared memory are accessed if we have two processors
+==============================================================================
+► Which distro you prefer?
+==============================================================================
+► Why do we have serial and parallel interface?
+==============================================================================
+► Which Linux distros do you have experience with ?
+==============================================================================
+► What are the Advantages and disadvantages of script?
+==============================================================================
+► What does ?route? command do?
+==============================================================================
+► What is symbolic link in unix ?
+==============================================================================
+► Explain difference between IPC
+==============================================================================
+► What are the system calls used for process management?
+==============================================================================
+► What is IPC ?
+==============================================================================
