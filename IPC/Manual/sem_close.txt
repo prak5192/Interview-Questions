@@ -1,0 +1,45 @@
+SEM_CLOSE(3)            Linux Programmer's Manual           SEM_CLOSE(3)
+
+
+
+NAME
+       sem_close - close a named semaphore
+
+SYNOPSIS
+       #include <semaphore.h>
+
+       int sem_close(sem_t *sem);
+
+       Link with -lrt or -pthread.
+
+DESCRIPTION
+       sem_close() closes the named semaphore referred to by sem, allow‐
+       ing any resources that the system has allocated  to  the  calling
+       process for this semaphore to be freed.
+
+RETURN VALUE
+       On  success sem_close() returns 0; on error, -1 is returned, with
+       errno set to indicate the error.
+
+ERRORS
+       EINVAL sem is not a valid semaphore.
+
+CONFORMING TO
+       POSIX.1-2001.
+
+NOTES
+       All open named semaphores are  automatically  closed  on  process
+       termination, or upon execve(2).
+
+SEE ALSO
+       sem_getvalue(3),    sem_open(3),    sem_post(3),   sem_unlink(3),
+       sem_wait(3), sem_overview(7)
+
+COLOPHON
+       This page is part of release 3.35 of the Linux man-pages project.
+       A  description  of  the  project, and information about reporting
+       bugs, can be found at http://man7.org/linux/man-pages/.
+
+
+
+Linux                          2006-03-25                   SEM_CLOSE(3)

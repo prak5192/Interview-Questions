@@ -1,0 +1,70 @@
+PTHREAD_DETACH(3)       Linux Programmer's Manual      PTHREAD_DETACH(3)
+
+
+
+NAME
+       pthread_detach - detach a thread
+
+SYNOPSIS
+       #include <pthread.h>
+
+       int pthread_detach(pthread_t thread);
+
+       Compile and link with -pthread.
+
+DESCRIPTION
+       The  pthread_detach()  function  marks  the  thread identified by
+       thread as detached.   When  a  detached  thread  terminates,  its
+       resources  are  automatically released back to the system without
+       the need for another thread to join with the terminated thread.
+
+       Attempting to  detach  an  already  detached  thread  results  in
+       unspecified behavior.
+
+RETURN VALUE
+       On  success,  pthread_detach() returns 0; on error, it returns an
+       error number.
+
+ERRORS
+       EINVAL thread is not a joinable thread.
+
+       ESRCH  No thread with the ID thread could be found.
+
+CONFORMING TO
+       POSIX.1-2001.
+
+NOTES
+       Once a  thread  has  been  detached,  it  can't  be  joined  with
+       pthread_join(3) or be made joinable again.
+
+       A   new   thread  can  be  created  in  a  detached  state  using
+       pthread_attr_setdetachstate(3) to set the detached  attribute  of
+       the attr argument of pthread_create(3).
+
+       The detached attribute merely determines the behavior of the sys‐
+       tem when the thread terminates; it does not  prevent  the  thread
+       from being terminated if the process terminates using exit(3) (or
+       equivalently, if the main thread returns).
+
+       Either pthread_join(3) or pthread_detach() should be  called  for
+       each thread that an application creates, so that system resources
+       for the thread can be released.  (But note that the resources  of
+       all threads are freed when the process terminates.)
+
+EXAMPLE
+       The following statement detaches the calling thread:
+
+           pthread_detach(pthread_self());
+
+SEE ALSO
+       pthread_attr_setdetachstate(3),  pthread_cancel(3),  pthread_cre‐
+       ate(3), pthread_exit(3), pthread_join(3), pthreads(7)
+
+COLOPHON
+       This page is part of release 3.35 of the Linux man-pages project.
+       A  description  of  the  project, and information about reporting
+       bugs, can be found at http://man7.org/linux/man-pages/.
+
+
+
+Linux                          2008-11-27              PTHREAD_DETACH(3)

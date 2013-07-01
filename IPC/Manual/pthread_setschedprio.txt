@@ -1,0 +1,65 @@
+PTHREAD_SETSCHEDPRIO(3) Linux Programmer's ManualPTHREAD_SETSCHEDPRIO(3)
+
+
+
+NAME
+       pthread_setschedprio - set scheduling priority of a thread
+
+SYNOPSIS
+       #include <pthread.h>
+
+       pthread_setschedprio(pthread_t thread, int prio);
+
+       Compile and link with -pthread.
+
+DESCRIPTION
+       The  pthread_setschedprio() function sets the scheduling priority
+       of the thread thread to the value specified in  prio.   (By  con‐
+       trast pthread_setschedparam(3) changes both the scheduling policy
+       and priority of a thread.)
+
+RETURN VALUE
+       On success, this function returns  0;  on  error,  it  returns  a
+       nonzero  error  number.   If  pthread_setschedprio()  fails,  the
+       scheduling priority of thread is not changed.
+
+ERRORS
+       EINVAL prio is not valid for the scheduling policy of the  speci‐
+              fied thread.
+
+       EPERM  The caller does not have appropriate privileges to set the
+              specified priority.
+
+       ESRCH  No thread with the ID thread could be found.
+
+       POSIX.1-2001 also documents an ENOTSUP ("attempt was made to  set
+       the    priority    to    an   unsupported   value")   error   for
+       pthread_setschedparam(3).
+
+VERSIONS
+       This function is available in glibc since version 2.3.4.
+
+CONFORMING TO
+       POSIX.1-2001.
+
+NOTES
+       For a description of the permissions required to, and the  effect
+       of,  changing  a thread's scheduling priority, and details of the
+       permitted ranges for priorities in each  scheduling  policy,  see
+       sched_setscheduler(2).
+
+SEE ALSO
+       getrlimit(2),  sched_get_priority_min(2),  sched_setscheduler(2),
+       pthread_attr_init(3),            pthread_attr_setinheritsched(3),
+       pthread_attr_setschedparam(3),    pthread_attr_setschedpolicy(3),
+       pthread_create(3),   pthread_self(3),   pthread_setschedparam(3),
+       pthreads(7)
+
+COLOPHON
+       This page is part of release 3.35 of the Linux man-pages project.
+       A description of the project,  and  information  about  reporting
+       bugs, can be found at http://man7.org/linux/man-pages/.
+
+
+
+Linux                          2008-11-06        PTHREAD_SETSCHEDPRIO(3)

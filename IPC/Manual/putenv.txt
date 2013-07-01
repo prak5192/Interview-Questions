@@ -1,0 +1,76 @@
+PUTENV(3)               Linux Programmer's Manual              PUTENV(3)
+
+
+
+NAME
+       putenv - change or add an environment variable
+
+SYNOPSIS
+       #include <stdlib.h>
+
+       int putenv(char *string);
+
+   Feature    Test    Macro    Requirements    for   glibc   (see   fea‐
+   ture_test_macros(7)):
+
+       putenv(): _SVID_SOURCE || _XOPEN_SOURCE
+
+DESCRIPTION
+       The putenv() function adds or changes the  value  of  environment
+       variables.   The  argument  string is of the form name=value.  If
+       name does not already exist in the environment,  then  string  is
+       added  to the environment.  If name does exist, then the value of
+       name in the environment is changed to value.  The string  pointed
+       to  by  string  becomes  part of the environment, so altering the
+       string changes the environment.
+
+RETURN VALUE
+       The putenv() function returns zero on success, or nonzero  if  an
+       error occurs.
+
+ERRORS
+       ENOMEM Insufficient space to allocate new environment.
+
+CONFORMING TO
+       SVr4, POSIX.1-2001, 4.3BSD.
+
+NOTES
+       The  putenv()  function  is not required to be reentrant, and the
+       one in libc4, libc5 and glibc 2.0 is not, but the glibc 2.1  ver‐
+       sion is.
+
+       Description for libc4, libc5, glibc: If the argument string is of
+       the form name, and does not contain an '='  character,  then  the
+       variable  name  is removed from the environment.  If putenv() has
+       to allocate a new array environ, and the previous array was  also
+       allocated  by  putenv(),  then it will be freed.  In no case will
+       the old storage associated to the environment variable itself  be
+       freed.
+
+       The  libc4  and  libc5 and glibc 2.1.2 versions conform to SUSv2:
+       the pointer string given to putenv()  is  used.   In  particular,
+       this  string  becomes  part of the environment; changing it later
+       will change the environment.  (Thus, it is an error  is  to  call
+       putenv()  with an automatic variable as the argument, then return
+       from the calling function while string is still part of the envi‐
+       ronment.)  However, glibc 2.0-2.1.1 differs: a copy of the string
+       is used.  On the one hand this causes a memory leak, and  on  the
+       other  hand  it  violates  SUSv2.   This  has been fixed in glibc
+       2.1.2.
+
+       The 4.4BSD version, like glibc 2.0, uses a copy.
+
+       SUSv2 removes the const from the prototype,  and  so  does  glibc
+       2.1.3.
+
+SEE ALSO
+       clearenv(3), getenv(3), setenv(3), unsetenv(3), environ(7)
+
+COLOPHON
+       This page is part of release 3.35 of the Linux man-pages project.
+       A description of the project,  and  information  about  reporting
+       bugs, can be found at http://man7.org/linux/man-pages/.
+
+
+
+GNU                            2007-07-26                      PUTENV(3)
