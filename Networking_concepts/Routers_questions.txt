@@ -1,0 +1,35 @@
+1. What is Router? Explain components of Routers.
+Sol:
+    The way switches connect multiple computers, a router connects 
+multiple networks. Routers comprise of data consisting of large 
+tables of networks and addresses. Routers use algorithms to determine 
+the shortest route to an address in a network. 
+
+==============================================================================
+2. What are the basic components of routers? 
+Sol:
+    Components of Router:-
+Internal components:
+    ROM:- Used to store the routers bootstrap details, operating 
+          system software.
+    Flash memory: - holds the operating systems images. The content 
+                is retained when the router is restarted.
+    RAM: - Used to store the Routing tables, configuration files, 
+           caching and buffering details. Content is lost when lost 
+           router is switched off or restarted.
+    NVRAM:- Stores the routers startup config files. Data is non volatile.
+    Network interfaces to connect router to network.
+
+External components:
+    Virtual terminals: For accessing routers 
+    Network management stations.
+
+==============================================================================
+3. How to know the external IP address of router?
+Sol:
+    wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]|.]//g'
+
+-q : quietly
+-O : output to a stand file
+
+==============================================================================
