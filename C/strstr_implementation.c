@@ -3,7 +3,7 @@
 
 char* my_strstr(char *s2, char *s1)
 {
-    int i, j;
+    int i, j, k;
     int flag = 0;
 
     if ((s2 == NULL || s1 == NULL)){ 
@@ -11,11 +11,11 @@ char* my_strstr(char *s2, char *s1)
     }
     for( i = 0; s2[i] != '\0'; i++){
         if (s2[i] == s1[0]){
-            for (j = i; ; j++){
-                if (s1[j-i] == '\0'){ 
+            for (j = i, k = 0; ; j++, k++){
+                if (s1[k] == '\0'){ 
                     flag = 1; break;
                 }
-                if (s2[j] == s1[j-i]) { 
+                if (s2[j] == s1[k]) { 
                     continue;
                 } else { 
                     break;
