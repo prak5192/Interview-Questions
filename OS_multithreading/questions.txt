@@ -42,23 +42,67 @@ of physical memory where the kernel image is loaded at boot time.
 ===============================================================================
 ► How does system call works?
 Sol:
- At a higher level, a system call is the way a user level program asks the 
-operating system to do something for it. If you're writing a program, and 
-you need to read from a file, you use a system call to ask the operating 
-system to read the file for you.
-First, the user program sets up the arguments for the system call. One of 
-the arguments is the system call number (more on that later). Note that 
-all this is done automatically by library functions unless you are writing 
-in assembly. After the arguments are all set up, the program executes the 
-"system call" instruction. This instruction causes an exception: an event 
-that causes the processor to jump to a new address and start executing the 
-code there.
+ Any application running on Linux may request services like :
 
-The instructions at the new address save your user program's state, figure 
-out what system call you want, call the function in the kernel that 
-implements that system call, restores your user program state, and returns 
-control back to the user program. A system call is one way that the 
-functions defined in a device driver end up being called.
+    Inter process communication
+    I/O services
+    Creating a new process
+    Accessing system hardware etc
+
+Note: The above list is not exhaustive.
+The services listed above are all handled by Linux kernel. So, any 
+application in Linux that requires any of these services has to request 
+the Linux kernel to handle the request on its behalf. The request is 
+handed over to kernel by calling corresponding system calls. System 
+calls act as an interface between application and kernel.
+
+Some examples of system calls include :
+
+    fork()
+    execve()
+    open()
+    read()
+    write() etc
+
+
+How system call works:-
+======================
+The following points explain the operation of a system call on 
+x86-32 hardware:
+
+From a programmer point of view, calling a system call is 
+quivalent to calling any normal C function.
+Inside the Linux kernel, each system call has a number associated 
+ith it.
+The kernel expects all the information like system call number, 
+the arguments to the system call etc to be present in CPU 
+registers.
+A system call first invokes a C library wrapper function which 
+does all this work of placing the information required to be 
+placed in CPU registers. The system call number is placed in the 
+register %eax.After doing the above work, the same wrapper function 
+invokes a trap instruction 'int 0x80'. This instruction switches 
+the processor mode from user mode to the kernel mode and executes
+the code kept at location 0x80.  Note : Starting with Linux kernel
+2.6 and glibc 2.3.2 a faster mechanism of using the 'sysenter' 
+instruction is followed to switch into the kernel mode.
+After the above step, now since the processor is in kernel mode, 
+the kernel calls a general trap handler function system_call() 
+to handle this trap.
+This handler function :                                                                                                                                                                                                                                                                              Copies all the relevant information kept in the CPU registers onto the kernel stack, Validates the system call number, Uses the system call number to find the corresponding system call service routine from a table(sys_call_table) of service routines maintained by kernel and Calls the system call service routine with the arguments passed from the user space. 
+The system call service routine that is finally called by the trap 
+handler first checks the validity of the arguments sent to it and 
+then it does the actual work requested by the application.
+Once the system call service routine is done with its processing, 
+the control is returned back to the trap handler function which 
+returns the flow back to the wrapper function in the user-mode.
+Based on the return value from the trap handler, the wrapper 
+function sets the 'errno' variable and returns -1 (in most of the 
+cases) to indicate an error.
+The value of the 'errno' variable is assigned by negating the 
+return value of the trap handler (returned to wrapper function).
+The application can use the strerror() API with 'errno' to get 
+the error information in form of human readable string.
 
 ===============================================================================
 ► What is a race condition? How do you detect them? How do you handle 
