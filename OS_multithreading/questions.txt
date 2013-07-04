@@ -1,3 +1,45 @@
+► What is the memory management in OS. Define kernel space and User spcae
+in Operating system.
+Sol:
+    The really simplified answer is that the kernel runs in kernel space, 
+and normal programs run in user space. User space is basically a form of 
+sand-boxing -- it restricts user programs so they can't mess with memory 
+(and other resources) owned by other programs or by the OS kernel. This 
+limits (but usually doesn't entirely eliminate) their ability to do bad 
+things like crashing the machine.
+
+The kernel is the core of the operating system. It normally has full 
+access to all memory and machine hardware (and everything else on the 
+machine. To keep the machine as stable as possible, you normally want 
+only the most trusted, well-tested code to run in kernel mode/kernel 
+space.
+
+    Kernel space and user space is the separation of the privileged 
+operating system functions and the restricted user applications. The 
+separation is necessary to prevent user applications from ransacking your 
+computer. It would be a bad thing if any old user program could start 
+writing random data to your hard drive or read memory from another user 
+program's memory space.
+
+User space programs cannot access system resources directly so access 
+is handled on the program's behalf by the operating system kernel. The 
+user space programs typically make such requests of the operating system 
+through system calls.
+
+Kernel threads, processes, stack do not mean the same thing. They are 
+analogous constructs for kernel space as their counterparts in user space.
+
+    Each process has its own 4GB of virtual memory which maps to the 
+physical memory through page tables. The virtual memory is mostly split 
+in two parts: 3 GB for the use of the process and 1 GB for the use of the 
+Kernel. Most of the variables you create lie in the first part of the 
+address space. That part is called user space. The last part is where 
+the kernel resides and is common for all the processes. This is called 
+Kernel space and most of this space is mapped to the starting locations 
+of physical memory where the kernel image is loaded at boot time.   
+
+
+===============================================================================
 ► How does system call works?
 Sol:
  At a higher level, a system call is the way a user level program asks the 
