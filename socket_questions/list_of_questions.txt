@@ -1,3 +1,8 @@
+► What is difference between polling based socket and Interrupt based socket?
+Sol:
+ 
+
+================================================================================
 ► Explain the tcp windowing concept.
 Sol:
     TCP windowing concept is primarily used to avoid congestion 
