@@ -1,5 +1,77 @@
-► What is difference between polling based socket and Interrupt based socket?
+► What is difference between polling/Non blocking based socket and 
+Interrupt based socket?
 Sol:
+    Non blocking sockets
+    ====================
+It's convenient to use sockets that don,t block in case where an 
+I/O request might not get complete imidiatley, causing the process 
+to be suspended waiting completion of the request. Once the socket 
+has been created via the socket call, It may be marked non-blocking 
+by ioctl() as follows. 
+
+#include<ioctl.h>
+...
+int s, on;
+...
+on = 1
+s = socket(AF_INET,SOCK_STREAM,0);
+...
+if(ioctl(s,FIONBIO,&on) < 0) {
+    perror("ioctl F_SETFL,FNDELAY");
+    exit(1);
+}
+...
+
+When performing non-blocking I/O on socket, we must be careful 
+to check for the error EWOULDBLOCK (sstored in global errno), which 
+occurs when an operation would normally block, but the socket 
+it was performed on is marked as non-blocking.
+In particular accept(),connect, send, recv, read, and write 
+can all return EWOULDBLOCK.
+
+
+    Interrupt-driven socket I/O
+    ===========================
+The SIGIO signal allows a process to be notified via a signal 
+when a socket (or more generally, a file descriptor) has data waiting 
+to be read. Use of the SIGIO facility requires three steps:
+    1. The process must set up a SIGIO signal handler by use of the 
+       signal() or sigaction() calls.
+    2. The process must set the process ID or process group ID that 
+       is to receive notification of pending input to its own process ID 
+       or to the process group ID of its process group (note that the 
+       default process group of a socket is group zero).
+       This is accomplished by use of an ioctl() call.
+    3. The process must enable asynchronous notification of pending 
+       I/O requests with another ioctl() call.
+
+    Use of asynchronous notification of I/O requests:-
+The following sample code shows how to allow a process to receive 
+information on pending I/O requests as they occur for a socket. 
+With the addition of a handler for SIGURG, this code can also be 
+used to prepare for receipt of SIGURG signals.
+
+#include <ioctl.h>
+#include <sys/types.h>
+...
+int io_handler(), on;
+pid_t pgrp;
+...
+on=1;
+signal(SIGIO, io_handler);
+/* Set the process receiving SIGIO/SIGURG signals to us */
+pgrp=getpid();
+if (ioctl(s, SIOCSPGRP, &pgrp) < 0) {
+perror("ioctl F_SETOWN");
+exit(1);
+}
+/* Allow receipt of asynchronous I/O signals */
+
+if (ioctl(s, FIOASYNC, &on) < 0) {
+perror("ioctl F_SETFL, FASYNC");
+exit(1);
+}
+
  
 
 ================================================================================
