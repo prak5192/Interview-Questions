@@ -1,3 +1,61 @@
+►
+===============================================================================
+► What is priority inversion? What is its solution?
+Sol:
+Imagine three (3) tasks of different priority: tLow, tMed and tHigh. 
+tLow and tHigh access the same critical resource at different times; 
+tMed does its own thing.
+
+1. tLow is running, tMed and tHigh are presently blocked (but not 
+   in critical section).
+2. tLow comes along and enters the critical section.
+3. tHigh unblocks and since it is the highest priority task in the 
+   system, it runs.
+4. tHigh then attempts to enter the critical resource but blocks as 
+   tLow is in there.
+5. tMed unblocks and since it is now the highest priority task in 
+   the system, it runs.
+
+tHigh can not run until tLow gives up the resource. tLow can not 
+run until tMed blocks or ends. The priority of the tasks has been 
+inverted; tHigh though it has the highest priority is at the 
+bottom of the execution chain.
+
+To "solve" priority inversion, the priority of tLow must be bumped 
+up to be at least as high as tHigh. Some may bump its priority to 
+the highest possible priority level. Just as important as bumping 
+up the priority level of tLow, is dropping the priority level of 
+tLow at the appropriate time(s). Different systems will take 
+different approaches.
+
+When to drop the priority of tLow ...
+
+    No other tasks are blocked on any of the resources that tLow 
+    has. This may be due to timeouts or the releasing of resources.
+    No other tasks contributing to the raising the priority level 
+    of tLow are blocked on the resources that tLow has. This may 
+    be due to timeouts or the releasing of resources.
+    When there is a change in which tasks are waiting for the 
+    resource(s), drop the priority of tLow to match the priority 
+    of the highest priority level task blocked on its resource(s).
+
+Method #2 is an improvement over method #1 in that it shortens 
+the length of time that tLow has had its priority level bumped. 
+Note that its priority level stays bumped at tHigh's priority 
+level during this period.
+
+Method #3 allows the priority level of tLow to step down in 
+increments if necessary instead of in one all-or-nothing step.
+
+Different systems will implement different methods depending 
+upon what factors they consider important.
+
+1. memory footprint
+2. complexity
+3. real time responsiveness
+4. developer knowledge
+===============================================================================
+
 ► What is the memory management in OS. Define kernel space and User spcae
 in Operating system.
 Sol:
