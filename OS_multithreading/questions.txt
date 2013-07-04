@@ -89,7 +89,12 @@ instruction is followed to switch into the kernel mode.
 After the above step, now since the processor is in kernel mode, 
 the kernel calls a general trap handler function system_call() 
 to handle this trap.
-This handler function :                                                                                                                                                                                                                                                                              Copies all the relevant information kept in the CPU registers onto the kernel stack, Validates the system call number, Uses the system call number to find the corresponding system call service routine from a table(sys_call_table) of service routines maintained by kernel and Calls the system call service routine with the arguments passed from the user space. 
+This handler function : Copies all the relevant information kept 
+in the CPU registers onto the kernel stack, Validates the system 
+call number, Uses the system call number to find the corresponding 
+system call service routine from a table(sys_call_table) of service 
+routines maintained by kernel and Calls the system call service 
+routine with the arguments passed from the user space. 
 The system call service routine that is finally called by the trap 
 handler first checks the validity of the arguments sent to it and 
 then it does the actual work requested by the application.
