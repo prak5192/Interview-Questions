@@ -1,4 +1,25 @@
-1. What is a race condition? How do you detect them? How do you handle 
+► How does system call works?
+Sol:
+ At a higher level, a system call is the way a user level program asks the 
+operating system to do something for it. If you're writing a program, and 
+you need to read from a file, you use a system call to ask the operating 
+system to read the file for you.
+First, the user program sets up the arguments for the system call. One of 
+the arguments is the system call number (more on that later). Note that 
+all this is done automatically by library functions unless you are writing 
+in assembly. After the arguments are all set up, the program executes the 
+"system call" instruction. This instruction causes an exception: an event 
+that causes the processor to jump to a new address and start executing the 
+code there.
+
+The instructions at the new address save your user program's state, figure 
+out what system call you want, call the function in the kernel that 
+implements that system call, restores your user program state, and returns 
+control back to the user program. A system call is one way that the 
+functions defined in a device driver end up being called.
+
+===============================================================================
+► What is a race condition? How do you detect them? How do you handle 
 them? And finally, how do you prevent them from occurring?
 Sol: A race condition occurs when two or more threads can access shared 
 data and they try to change it at the same time. Because the thread scheduling 
@@ -6,35 +27,6 @@ algorithm can swap between threads at any time, you don't know the order in
 which the threads will attempt to access the shared data. Therefore, the 
 result of the change in data is dependent on the thread scheduling algorithm, 
 i.e. both threads are "racing" to access/change the data.
-
-Problems often occur when one thread does a "check-then-act" (e.g. "check" if 
-the value is X, then "act" to do something that depends on the value being X) 
-and another thread does something to the value in between the "check" and the 
-"act". E.g:
-
-if (x == 5) // The "Check"
-{
-   y = x * 2; // The "Act"
-
-   // If another thread changed x in between "if (x == 5)" and "y = x * 2" above,
-   // y will not be equal to 10.
-}
-
-The point being, y could be 10, or it could be anything, depending on whether 
-another thread changed x in between the check and act. You have no real way 
-of knowing.
-
-In order to prevent race conditions from occurring, you would typically put 
-a lock around the shared data to ensure only one thread can access the data 
-at a time. This would mean something like this:
-
-// Obtain lock for x
-if (x == 5)
-{
-   y = x * 2; // Now, nothing can change x until the lock is released. 
-              // Therefore y = 10
-}
-// release lock for x
 
 ===============================================================================
 
