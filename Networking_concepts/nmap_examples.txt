@@ -1,0 +1,53 @@
+► Scaning all the systems in a network.
+  #nmap -sP 10.0.0.0/24
+  The above example will discover all the hosts runnung
+  in the range 10.0.0.0  to 10.0.0.255
+  
+  If we want to specify the range we can go through the 
+  below method.
+  #nmap -sP 10.0.0.16-100
+
+============================================================= 
+ 
+► Scan a operating system with its IP.
+  #nmap -O 192.168.2.3
+  or 
+  #nmap -O www.hostname.org www.hostname2.org
+
+============================================================= 
+
+► Sacn service :
+  #nmap -sV 192.168.42.1
+  
+============================================================= 
+  
+► Check for particular port on local machine
+  #nmap –p portnumber hostname
+  ex: #nmap -p 53 192.168.0.1
+  
+============================================================= 
+  
+► Scan a machine for TCP open ports
+  #nmap –sT hostname
+  ex: #nmap -sT 192.168.42.1
+  
+============================================================= 
+  
+► Scan a machine for UDP open ports.
+  #nmap –sU hostname
+  
+=============================================================
+
+► To check which protocol(not port) such as TCP, UDP, ICMP 
+etc is supported by the remote machine. This -sO will give 
+you the protocol supported and its open status.
+  #nmap –sO hostname
+  ex: #nmap –sO 192.168.42.1
+
+=============================================================
+
+► To scan a system for operating system and uptime details
+  #nmap -O hostname
+  ex: #nmap -O 192.168.42.1
+
+=============================================================
