@@ -1,6 +1,79 @@
 Link:
     http://174.37.163.146-static.reverse.softlayer.com/ipc/ipc-interview-questions.asp
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+►
+==============================================================================
+► What is difference between mutex locking and semaphore?
+http://stackoverflow.com/questions/62814/difference-between-binary-semaphore-and-mutex
+http://stackoverflow.com/questions/4039899/when-should-we-use-mutex-and-when-should-we-use-semaphore
+Sol:
+http://blog.feabhas.com/2009/09/mutex-vs-semaphores-%E2%80%93-part-1-semaphores/
+http://blog.feabhas.com/2009/09/mutex-vs-semaphores-%E2%80%93-part-2-the-mutex/
+http://blog.feabhas.com/2009/10/mutex-vs-semaphores-%E2%80%93-part-3-final-part-mutual-exclusion-problems/
 
+1.    The mutex is used for protecting parts of code from running 
+concurrently, semaphores are used for one thread to signal another 
+thread to run. 
+
+2. The difference between a Mutex and a Binary-Semaphore is 
+the principle of ownership: 
+A mutex is acquired by a task and therefore must also be released 
+by the same task. This makes it possible to fix several problems 
+with binary semaphores (Accidential release, recursive deadlock 
+and priority inversion).
+
+3. Semaphore maintain the reference count. Like if the semaohore 
+is called two times it will maintiain the count value of the 
+semaphore as 2, while this is not true int he case of Mutex.
+
+Semaphore is used for singanlling pirpose and mutex is used 
+protecting purpose.
 ==============================================================================
 ► What is the major advantage of a hash table? 
 Sol:
@@ -81,9 +154,23 @@ Sol:
 Sol:
     It will print "Hello world" 8 times.
 ==============================================================================
-► Predict the output of the following program code main() { fork(); printf("Hello World!"); }
-==============================================================================
 ► Explain fork() system call.
+Sol:
+    Function Prototype:
+        #include<unistd.h>
+        pid_t fork(void)
+
+    Fork create new process by duplicating the calling process.
+Diffference bwteen child and parrent process:
+1. The child has its own unique process ID, and this PID does not match 
+   the ID of any existing process group.
+2. The child's parrent process id is same as the parent's process ID.
+3. The child does not inherit its process memory Lock.
+4. Process resource utilization are reset to zero in child.
+5. The child inherit its semaphore adjustment from its parent.
+6. The Child does not inherit record lock from its parent.
+7. The termination signal of child is always SIGCHILD
+
 ==============================================================================
 ► What are various IDs associated with a process?
 ==============================================================================
