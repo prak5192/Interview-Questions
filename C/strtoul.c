@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-void main(void);
 void main(void)
 {
      char* str  = "12345ascd";
