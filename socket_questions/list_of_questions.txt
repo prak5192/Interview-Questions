@@ -1,4 +1,41 @@
 ►
+http://www.globalguideline.com/forum/viewtopic.php?id=365
+http://interviewquestionsanswers.org/forum/topic-1025-socket-programming-interview-questions-and-answers-page-1.html
+http://interviewstar.blogspot.in/2010/08/socket-programming-interview-questions.html
+================================================================================
+► Users are complaining of delays when using the network What would you do?
+Sol:
+   That's a fairly vague (and typical) complaint.
+
+I'd first try to get the user to identify what network resource is 
+slow (email, external web browsing, intranet, network file access, etc.) 
+I'd probably also have the user swap locations with another coworker 
+to identify if the problem lies in the hardware (computer, network 
+cable, switch port, etc.) that is specific to that location.
+
+If neither user identifies a difference, then I'd chalk it up to 
+poorly managed expectations and work to explain to the user that j
+ust because this is a business network, it doesn't necessarily mean 
+that it'll be faster than their single machine on cable/dsl at home.
+
+However, if both users see a difference, then I'd investigate the 
+items that are specific to the slow machine's network. For example, 
+I'd check that the switch port is set to full duplex, that the 
+computer's network drivers are up to date, etc. 
+
+
+
+
+Please chosse any node where you are facing dealys, And run a 
+packet capture like Wireshark,
+You may also use a Network anylazer[ many free softwares available] 
+by configuring Netflow on switch if it support & check what kind 
+of packets are flowing in your network and you could surely find 
+the reason creating delays.
+
+Also check cables & Switch interfaces for errors & CRC, some faulty 
+cables create errors which lead to pkt drops & slow responce
+
 
 ================================================================================
 ► What is difference between select and poll  system call?
