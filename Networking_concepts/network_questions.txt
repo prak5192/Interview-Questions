@@ -1,0 +1,339 @@
+► What are the advantages and disadvantages of the 
+three types of routing tables 
+=========================================================================
+► What is a characteristic of Store and Forward switches?
+ 
+=========================================================================
+► What is source route 
+=========================================================================
+►  What is RIP (Routing Information Protocol)
+=========================================================================
+► What is SLIP (Serial Line Interface Protocol)
+=========================================================================
+►  What is Proxy ARP
+=========================================================================
+► What is OSPF
+=========================================================================
+► What is Gateway-to-Gateway protocol
+=========================================================================
+► What is EGP (Exterior Gateway Protocol)
+=========================================================================
+► What is IGP (Interior Gateway Protocol)
+=========================================================================
+► What is Mail Gateway
+=========================================================================
+► What is silly window syndrome
+=========================================================================
+► What is the difference between TFTP and FTP application layer protocols
+=========================================================================
+► What is the range of addresses in the classes of internet addresses
+Sol:
+Class A 0.0.0.0 - 127.255.255.255
+Class B 128.0.0.0 - 191.255.255.255
+Class C 192.0.0.0 - 223.255.255.255
+Class D 224.0.0.0 - 239.255.255.255
+Class E 240.0.0.0 - 247.255.255.255
+=========================================================================
+► What is the minimum and maximum length of the header in the TCP 
+segment and IP datagram 
+=========================================================================
+► What is difference between ARP and RARP 
+=========================================================================
+► What is ICMP
+=========================================================================
+► What are the data units at different layers of the 
+TCP / IP protocol suite
+Sol:
+    The data unit created at the application layer is called a 
+message, at the transport layer the data unit created is called either 
+a segment or an user datagram, at the network layer the data unit 
+created is called the datagram, at the data link layer the datagram is 
+encapsulated in to a frame and finally transmitted as signals along 
+the transmission media.
+=========================================================================
+► Difference between bit rate and baud rate.
+Sol:
+Bit rate is the number of bits transmitted during one second 
+whereas baud rate refers to the number of signal units per
+second that are required to represent those bits.
+baud rate = bit rate / N where N is no-of-bits represented by each 
+signal shift. 
+=========================================================================
+► What is terminal emulation, in which layer it comes
+Sol:
+Telnet is also called as terminal emulation. It belongs to 
+application layer.
+=========================================================================
+► How Gateway is different from Routers 
+=========================================================================
+► What are major types of networks and explain
+Sol:
+Server-based network
+Peer-to-peer network
+Peer-to-peer network, computers can act as both servers sharing 
+resources and as clients using the resources.
+Server-based networks provide centralized control of network 
+resources and rely on server computers to provide
+security and network administration
+=========================================================================
+► What is difference between baseband and broadband transmission
+Sol:
+    In a baseband transmission, the entire bandwidth of the cable 
+is consumed by a single signal. In broadband transmission, signals 
+are sent on multiple frequencies, allowing multiple signals to 
+be sent simultaneously. 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► What is Bit Stuffing?
+Sol:
+ - Bit stuffing means adding one extra 0 whenever five 
+consecutive 1s follow a 0.
+ - This is done so that the pattern 0111110 is not mistaken 
+for a flag.
+=========================================================================
+► How does dynamic host configuration protocol aid in network 
+administration?
+Sol:
+- In a large set up where it is difficult to manually configure 
+the IP address of each system, dynamic host configuration protocol 
+comes very helpful.
+- Using this protocol, the administrator can create a pool of IP 
+addresses which are called scopes. These can be then dynamically 
+assigned to the systems.
+
+ 
+=========================================================================
+► Explain SSL Protocol. How does it protect internet users from 
+various threats?
+Sol:
+    The SSL protocol (Secure Socket Layer protocol) was originally 
+developed by Netscape, to ensure security of data transported and 
+routed through HTTP, LDAP or POP3 application layer.
+
+SSL uses TCP as a communication layer to provide a reliable end-to-end 
+secure and authenticated connection; which helps internet users to 
+protect from various threats. SSL Record protocol is used to ensure 
+the data security and integrity.  
+=========================================================================
+► What is IP Spoofing and how can it be prevented?
+Sol:
+    IP spoofing is a mechanism used by attackers to gain 
+unauthorized access to a system. Here, the intruder sends messages 
+to a computer with an IP address indicating that the message is 
+coming from a trusted host. This is done by forging the header so 
+it contains a different address and make it appear that the packet 
+was sent by a different machine.
+Prevention
+    Packet filtering: - to allow packets with recognized formats to 
+enter the network
+    using special routers and firewalls.
+    Encrypting the session
+=========================================================================
+► What is 'Gateway of Last Resort'?
+Sol:
+    A Gateway of Last Resort or Default gateway is a route used 
+by the router when no other known route exists to transmit the 
+IP packet. Known routes are present in the routing table. Hence, 
+any route not known by the routing table is forwarded to the 
+default route. Each router which receives this packet will treat 
+the packet the same way, if the route is known, packet will be 
+forwarded to the known route. 
+=========================================================================
+► What is an application gateway?
+Sol:
+    An application gateway is an application program that runs 
+on a firewall between two networks. An application gateway is used 
+for establishing connection between client program and destination 
+service. The client negotiates with the gateway to communicate 
+with the service of destination. Here, gateway can be called as 
+a proxy. Hence, two connections are made; One between client and 
+proxy; other between proxy and destination service. Connections 
+take place behind the firewall. 
+=========================================================================
+► Explain IP datagram, Fragmentation and MTU.
+Sol:
+    IP datagram can be used to describe a portion of IP data. 
+Each IP datagram has set of fields arranged in an order. The order 
+is specific which helps to decode and read the stream easily. IP 
+datagram has fields like Version, header length, Type of service, 
+Total length, checksum, flag, protocol, Time to live, Identification, 
+source and destination ip address, padding, options and payload.
+
+MTU: Maximum Transmission Unit is the size of the largest packet 
+that a communication protocol can pass. The size can be fixed by 
+some standard or decided at the time of connection
+
+Fragmentation is a process of breaking the IP packets into smaller 
+pieces. Fragmentation is needed when the datagram is larger than 
+the MTU. Each fragment becomes a datagram in itself and transmitted 
+independently from source. When received by destination they are 
+reassembled. 
+=========================================================================
+► What are the differences between a domain and a workgroup?
+Sol:
+    In a domain, one or more computer can be a server to manage 
+the network. On the other hand in a workgroup all computers are 
+peers having no control on each other.
+
+In a domain, user doesn’t need an account to logon on a specific 
+computer if an account is available on the domain. In a work group 
+user needs to have an account for every computer. 
+
+In a domain, Computers can be on different local networks. In a work 
+group all computers needs to be a part of the same local network. 
+=========================================================================
+► What is the use of IGMP protocol?
+Internet Group Management Protocol: - It allows internet hosts to 
+participate in multicasting. The IGMP messages are used to learn 
+which hosts is part of which multicast groups. The mechanism also 
+allows a host to inform its local router that it wants to receive 
+messages. 
+=========================================================================
+► Explain IP, TCP and UDP.
+Sol:
+    TCP – Transmission control Protocol is used to establish 
+communication between nodes or networks and exchange data packets. 
+It guarantees delivery of data packets in the order they were sent. 
+Hence it is most commonly used in all applications that require 
+guaranteed delivery of data. It can handle both timeouts 
+(if packets were delayed) and retransmission (if packets were lost). 
+The stream of data is transmitted in segments. The segment header 
+is 32 bit. it is a connection oriented communication protocol at 
+the third level (network) of the OSI model.
+
+IP – Internet protocol is used for transmission of data over the 
+internet. IP uses IP addresses to identity each machine uniquely. 
+Message is sent using small packets. The packet contains both the 
+sender and receivers address. IP does not guarantee the delivery 
+in the same order as sent. This is because the packets are sent 
+via different routes. It is a connectionless communication protocol 
+at the third level (network) of the OSI model.
+
+UDP – User Data Protocol is a communication protocol. It is normally 
+used as an alternative for TCP/IP. However there are a number of 
+differences between them. UDP does not divide data into packets. 
+Also, UDP does not send data packets in sequence. Hence, the 
+application program must ensure the sequencing. UDP uses port 
+numbers to distinguish user requests. It also has a checksum 
+capability to verify the data.   
+=========================================================================
+► What are Malware? Explain different types of Malware 
+Sol:
+    Malware is a software program which is developed to destroy a 
+computer system. These programs runs in victim’s computer 
+without any information to the victim, i.e. victim do not 
+know that someone hacked his system.
+
+Different types of malware are: worm, Trojans Horse, Rootkits.
+Worm: Worm is a computer program which makes its copy again 
+and again in the victim’s computer. They damage the network 
+by using a lot bandwidth.
+
+Trojan Horses: Trojan horse consists of two parts, server and 
+client. Server is an executable file which runs on victim’s 
+computer and attacker may take the full control of the 
+victim’s computer.
+
+Rootkits: Rootkits are used to hide the malicious processes 
+from active process
+=========================================================================
+► What does the Data Link Layer do?
+Sol:
+    The Data Link Layer transforms the physical layer to a 
+reliable link.It takes care of:
+    a. Node to node delivery.
+    b. Framing
+    c. Physical Addressing
+    d. Flow Control
+    e. Error Control
+    f. Access Control
+
+=========================================================================
+► What is NIC?
+Sol:
+
+- NIC stands for Network Interface Card.
+- It is a peripheral card attached to a PC to helps it connect 
+  to a network.
+- The MAC address of the card helps the network in identifying 
+  the PC. 
+
+
+=========================================================================
+► What are the responsibilities of Network Layer?
+Sol:
+    - The Network Layer aids in source-to-destination delivery of 
+      packet across multiple networks.
+    - It performs:
+        a. Logical Addressing
+        b. Routing
+
+=========================================================================
+► Name the various error detection methods.
+Sol:
+    The various error detection methods are:
+    a. Vertical Redundancy Check (VRC)
+    b. Longitudinal Redundancy Check (VRC)
+    c. Cyclic Redundancy Check (VRC)
+    d. Checksum
