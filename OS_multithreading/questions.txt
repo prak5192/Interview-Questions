@@ -1,4 +1,14 @@
-
+===============================================================================
+► Write a long running program in C. This program should not 
+hog the CPU, use no sleep()/block()/select()/wait(), should not 
+block resources...and should terminate after a very very very 
+long time.
+Sol: 
+    Set thread priority to lowest possible value (still settable 
+in user space) and have a while loop that increments a large 
+integer and exits when integer gets big enough. This doesn't hog 
+the CPU from other running processes and never blocks. It's 
+depedent on OS scheduling and system load, though. 
 ===============================================================================
 ► Given two linked lists, which are intersecting some where 
 the shape can be L,Y or I, how will you find the intersection 
