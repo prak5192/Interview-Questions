@@ -2,6 +2,12 @@
 Given a very very very large integer(with 1 million digits
 , say), how would you convert this integer to an ASCII string
 
+
+It's like :
+input - 12345678........8798989887873124234....(1 million digits)
+output - "12345678............8798989887873124234...."
+basically an itoa() kinda function but here the input is a very 
+very large integer
 */
 
 /* 
