@@ -1,4 +1,9 @@
-►
+► What is the mechanism for open(),read(),write() system calls how 
+does the kernel implements them and what happens when a user space 
+program uses open(file,r) like this with arguments,how does kernel 
+implement it.
+Sol:
+
 
 
 ===============================================================================
