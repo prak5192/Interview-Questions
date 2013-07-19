@@ -1,3 +1,56 @@
+
+===============================================================================
+► Given two linked lists, which are intersecting some where 
+the shape can be L,Y or I, how will you find the intersection 
+point?What will be time complexity.Assuming worst case how 
+will you reduce the complexity.After having attempted 
+this how will you convert above structure into X?
+
+===============================================================================
+► Differenced between fork(),pthread() system calls.What is vfork().
+What is a file system how does kernel stores the data structure 
+with respect to file system,he hinted to super blocks I was not much 
+aware of super blocks etc in a file system,then I attempted for 
+VFS kind of thing.
+Sol:
+    
+===============================================================================
+► 
+What is the difference between spin lock, mutex,semaphore.
+I was clear on this answer but then he asked for a real 
+example of mutex.
+
+I answered for busy waiting condition in spin lock,mutex 
+there is no context switch.Then he said about pthread_mutex() 
+call defined for using a mutex.Another program in which 
+you do a fork and have a child process where are you 
+going to use pthread_mutex in parent or in child.
+What is the difference between parent and child process?
+Sol:
+First say that what you are telling is about the POSIX 
+semaphores and not the system v semaphore.
+and pthread mutex.
+
+a) semaphore is basically a synchronization primitive 
+   but mutex is a locking primitive
+b) a semaphore can be a mutex but a mutex cannot be 
+   a semaphore
+c) semaphore can be signalled by any of the thread by 
+   using sem_post() but a mutex can be unlocked only 
+   by the thread which owns it.
+d) semaphores can be used between threads of different 
+   processes but mutex work between threads of the 
+   same process or between related process.
+e) semaphores are system wide and remain in the form of 
+   files on the filesystem until cleaned but mutexes are 
+   process-wide.
+
+ Spinlocks are locks used in the kernel code where we know 
+ the code fragment which acquires and releases the lock is 
+ deterministic. They continuously poll to know the status 
+ of the lock. Busy sleep.
+
+===============================================================================
 ► What is the mechanism for open(),read(),write() system calls how 
 does the kernel implements them and what happens when a user space 
 program uses open(file,r) like this with arguments,how does kernel 
