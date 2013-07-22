@@ -1,8 +1,14 @@
 // http://www.careercup.com/question?id=15877680
 /* 
 
-Complete the function getEqualSumSubstring, which takes a single argument. The single argument is a string s, which contains only non-zero digits.
-This function should print the length of longest contiguous substring of s, such that the length of the substring is 2*N digits (maximum length of the string is 49) and the sum of the leftmost N digits is equal to the sum of the rightmost N digits.If there is no such string, your function should print 0.
+Complete the function getEqualSumSubstring, which takes a 
+single argument. The single argument is a string s, which contains 
+only non-zero digits.
+This function should print the length of longest contiguous 
+substring of s, such that the length of the substring is 2*N 
+digits (maximum length of the string is 49) and the sum of the 
+leftmost N digits is equal to the sum of the rightmost N digits.
+If there is no such string, your function should print 0.
 
 Sample Test Cases:
 
@@ -14,7 +20,9 @@ Output #00:
 
 Explanation:
 1 + 2 + 3 = 2 + 3 + 1.
-The length of the longest substring = 6 where the sum of 1st half = 2nd half
+The length of the longest substring = 6 where the sum of 
+1st half = 2nd half
+
 
 Input #01:
 986561517416921217551395112859219257312
@@ -29,6 +37,8 @@ Possible nontested solution
 */
 
 #include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 int main()
 {
     char a[100],b[100],c[100],choice;
@@ -51,7 +61,7 @@ int main()
     else
     {
         printf("\nthe string length is ODD:so cannot perform\n");
-        exit();
+        exit(1 );
     }
 
     n=length/2;
