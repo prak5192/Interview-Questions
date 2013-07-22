@@ -36,7 +36,7 @@ Output #01:
 Possible nontested solution 
 */
 
-#include<cstdio>
+include<cstdio>
 #include<cstdlib>
 #include<string>
 #include<iostream>
@@ -44,31 +44,34 @@ Possible nontested solution
 using namespace std;
 
 int getEqualSumSubstring(string s) {
-    int i=0,j=i,foundLength=0;
-    for(i=0;i<s.length();i++)
+    int i = 0, j = i, foundLength = 0;
+    for(i = 0 ; i < s.length() ; i++)
     {   
-        for(j=i;j<s.length();j++)
+        for(j = i ; j < s.length() ; j++)
         {   
-            int temp = j-i+1;
+            int temp = j - i + 1;
 
-            if(temp%2==0)
+            if( (temp % 2) == 0)
             {   
-                int leftSum=0,rightSum=0;
-                string tempString=s.substr(i,temp);
-                // printf("%d ",tempString.length());
-                for(int k=0;k<temp/2;k++)
+                int leftSum = 0 , rightSum = 0;
+                string tempString = s.substr( i, temp);
+                cout << tempString << " Length -> " << tempString.length()<< endl;
+                for(int k = 0 ; k < temp/2 ; k++)
                 {   
-                    leftSum=leftSum+tempString[k]-48;
-                    rightSum=rightSum+tempString[k+(temp/2)]-48;
+                    leftSum = leftSum + tempString[k] - 48; 
+                    rightSum = rightSum + tempString[k+(temp/2)] - 48; 
                 }   
-                if((leftSum==rightSum)&&(leftSum!=0))
-                    if(tempString.length()>foundLength)
-                    foundLength=tempString.length(); 
+
+                if((leftSum == rightSum) && (leftSum != 0)) {
+                    if( tempString.length() > foundLength ) { 
+                        foundLength = tempString.length(); 
+                    }   
+                }   
             }   
         }   
-    }   
-    return(foundLength);
 
+    }   
+    return( foundLength );
 }
 
 
