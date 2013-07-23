@@ -36,7 +36,7 @@ Output #01:
 Possible nontested solution 
 */
 
-include<cstdio>
+#include<cstdio>
 #include<cstdlib>
 #include<string>
 #include<iostream>
@@ -51,6 +51,7 @@ int getEqualSumSubstring(string s) {
         {   
             int temp = j - i + 1;
 
+            /* Take the strings in pair */
             if( (temp % 2) == 0)
             {   
                 int leftSum = 0 , rightSum = 0;
@@ -63,7 +64,10 @@ int getEqualSumSubstring(string s) {
                 }   
 
                 if((leftSum == rightSum) && (leftSum != 0)) {
+                    /* If previous found lengh is less than the 
+                        current tempString lengh */
                     if( tempString.length() > foundLength ) { 
+                        /* Update the found string length */
                         foundLength = tempString.length(); 
                     }   
                 }   

@@ -12,15 +12,54 @@ str1 = "Hi i am pqrstuv in pqrstuv"
 */
 
 
-void *strrp(char *src,char *sub,char *rp,char *p)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char* argv[])
 {
-    int sub_len=strlen(sub);
-    char *po=NULL,*q=src;
-    while((po=strstr(q,sub))!=NULL)
+    int i;
+
+    char *a = "Hi  i am abc and i am in abc";
+    char* b="abc";
+    char* c="pqrstuv";
+    int lenb=strlen(b);
+    int lenc=strlen(c);
+    char* ptrb = malloc(lenb);
+    char* out;
+    char* outtemp;
+
+    out = malloc( 5*strlen(a) );
+    outtemp = out;
+
+    memset (out,0,strlen(a)+1);
+    memset (ptrb,0,lenb);
+
+    for (i =0 ; *a ; i++)
     {
-        strncat(p,q,po-q);
-        strcat(p,rp);
-        q+=po-q+sub_len;
+        // Copy lenb characters into temporary array
+        strncpy(ptrb, a, lenb);
+
+        // Compare temporary array with reference b
+        if (!strcmp(ptrb,b))
+        {
+            // If match, replace with other string.
+            strncpy(out,c,lenc);
+            out+=lenc;
+            a+=lenb;
+        }
+        else
+        {
+            // Increment pointers
+            *out++=*a++;
+        }
     }
-    strcat(p,q);
+
+    // Print output
+    *out='\0';
+    fputs(outtemp,stdout);
+    printf("\n");
+
+    // Free temporary memory
+    free(outtemp);
 }
