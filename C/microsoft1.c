@@ -17,9 +17,12 @@ Array4: 11 12 15 16
 
 */
 
+#if 0
+
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+
 
 int N = 8; // N*N matrix
 
@@ -53,7 +56,7 @@ int main() {
         }
     }
 
-#if 0
+
     printf("======================================================\n");
 //printing output1
     for(i = 0; i < 4; i++)
@@ -64,7 +67,6 @@ int main() {
         }
         printf("\n");
     }
-#endif
 
     printf("======================================================\n");
 //printing out other output
@@ -77,4 +79,57 @@ int main() {
         printf("\n");
     }
     return 0;
+}
+
+#endif 
+
+#include<iostream> 
+using namespace std; 
+
+void MatrixToArrayFun(int arr[][4],int iCol,int iRow){ 
+    if( iCol != iRow){ 
+        cout<<"sorry row and column must be same"<<endl; 
+        return; 
+    }   
+
+    int lNumber = iRow/2; 
+
+    int lRound = 0;  
+    while(lNumber){ 
+
+        cout << "===========1================="<<endl;
+        for(int i = lRound; i < lRound + 2 ; i++) 
+            for(int j = 0 ; j < 2 ; j++) 
+                cout << arr[i][j] << ".."; 
+
+        cout<<endl; 
+        cout << "============2================"<<endl;
+
+        for(int i = lRound ; i < lRound + 2 ; i++) 
+            for(int j = 2 ; j < 4 ; j++) 
+                cout << arr[i][j] << ".."; 
+            
+        cout<<endl; 
+
+        lNumber --; 
+        lRound+=2; 
+    }   
+} 
+
+int main(){ 
+    cout<<"hello"<<endl; 
+    int arr[4][4]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16}; 
+
+    int i, j;
+    for(i=0; i < 4; i++){
+        for(j=0; j<4; j++){
+            cout << arr[i][j] << "\t" ;
+        }   
+        cout << endl;
+    }   
+        
+    cout<<sizeof(arr)<<endl; 
+            
+    MatrixToArrayFun(arr,4,4); 
+
 }
