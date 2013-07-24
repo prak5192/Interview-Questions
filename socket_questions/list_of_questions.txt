@@ -3,6 +3,20 @@ http://www.globalguideline.com/forum/viewtopic.php?id=365
 http://interviewquestionsanswers.org/forum/topic-1025-socket-programming-interview-questions-and-answers-page-1.html
 http://interviewstar.blogspot.in/2010/08/socket-programming-interview-questions.html
 ================================================================================
+► What are the different states of TCP/IP connection?
+Sol: There are total 11 different states of TCP/IP connection:
+1.  SYN_SEND Indicates active open.
+2.  SYN_RECEIVED Server just received SYN from the client.
+3.  ESTABLISHED Client received server's SYN and session is established.
+4.  LISTEN Server is ready to accept connection.
+5.  FIN_WAIT_1 Indicates active close.
+6.  TIMED_WAIT Client enters this state after active close.
+7.  CLOSE_WAIT Indicates passive close. Server just received first FIN from a client.
+8.  FIN_WAIT_2 Client just received acknowledgment of its first FIN from the server.
+9.  LAST_ACK Server is in this state when it sends its own FIN.
+10. CLOSED Server received ACK from client and connection is closed. 
+
+================================================================================
 ► Users are complaining of delays when using the network What would you do?
 Sol:
    That's a fairly vague (and typical) complaint.
@@ -22,9 +36,6 @@ However, if both users see a difference, then I'd investigate the
 items that are specific to the slow machine's network. For example, 
 I'd check that the switch port is set to full duplex, that the 
 computer's network drivers are up to date, etc. 
-
-
-
 
 Please chosse any node where you are facing dealys, And run a 
 packet capture like Wireshark,
