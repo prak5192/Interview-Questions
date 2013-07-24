@@ -1,3 +1,65 @@
+► Layer 2 Vs  Layer 3?
+Sol:
+LAYER 2 NETWORKS
+==================
+A switch works with MAC addresses at layer 2 of the OSI 7 layer 
+model. Devices used on a Layer 2 Ethernet network include network 
+interface cards, hubs, bridges and switches. Ethernet devices 
+use 'burned in' MAC addresses to identify each host. These 
+addresses are attached to network interface cards and cannot be 
+changed. The address of a computer can only be changed if the 
+network interface card is changed. Layer 2 networks are connected 
+together using hubs, bridges and switches. Hubs take each frame 
+that is received and send duplicate frames simultaneously 
+out all other ports. Bridges forward broadcasts between two 
+connected networks until they have located all hosts. Switches 
+forward broadcast traffic only when it doesn't know where a 
+host is. None of these devices have to disassemble or reassemble 
+data, only forward it. Because nothing is done to the data along 
+the way, layer 2 networks are often considered to be 'faster' 
+than a layer 3 network.
+
+LAYER 3 NETWORKS
+================
+A Layer 3 switch is a high-performance device for network routing. 
+A router works with IP addresses at layer 3 of the model. Layer 3 
+networks are built to run on on layer 2 networks. In an IP layer 3 
+network, the IP portion of the datagram has to be read. This 
+requires stripping off the datalink layer frame information. 
+Once the protocol frame information is stripped, the IP datagram 
+has to be reassembled. Once the IP datagram is reassembled, the hop 
+count has to be decremented, the header checksum has to be 
+recalculated, a lookup for routing must be made, and only then 
+can the IP datagram be chopped back up and inserted into frames and 
+transmitted to the next hop. All of this takes extra time.
+
+Layer 2 networks forward all traffic, especially ARP and DHCP 
+broadcasts. Anything transmitted by one device is forwarded to 
+all devices. When the network gets large enough, the broadcast 
+traffic begins to create congestion and decreases network 
+efficiency.
+
+By contrast, layer 3 devices restrict broadcast traffic such 
+as ARP and DHCP broadcasts to the local network. This reduces 
+overall traffic levels by allowing administrators to chop 
+networks into smaller parts and restrict broadcasts to only 
+that sub-network. This means there is a limit to the size 
+of a layer 2 network. A layer 3 network, prperly configured, 
+can grow to any size. 
+
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
+► 
+=========================================================================
 ► What are the advantages and disadvantages of the 
 three types of routing tables 
 =========================================================================
@@ -82,20 +144,6 @@ Sol:
 is consumed by a single signal. In broadband transmission, signals 
 are sent on multiple frequencies, allowing multiple signals to 
 be sent simultaneously. 
-=========================================================================
-► 
-=========================================================================
-► 
-=========================================================================
-► 
-=========================================================================
-► 
-=========================================================================
-► 
-=========================================================================
-► 
-=========================================================================
-► 
 =========================================================================
 ► 
 =========================================================================

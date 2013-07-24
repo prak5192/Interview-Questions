@@ -1,4 +1,36 @@
 ===============================================================================
+► What is difference between _exit and exit and system call?
+Sol:
+You should use _exit (or its synonym _Exit) to abort the child 
+program when the exec fails, because in this situation, the child 
+process may interfere with the parent process' external data 
+(files) by calling its atexit handlers, calling its signal 
+handlers, and/or flushing buffers.
+
+For the same reason, you should also use _exit in any child 
+process that does not do an exec, but those are rare.
+
+In all other cases, just use exit. As you partially noted yourself, 
+every process in Unix/Linux (except one, init) is the child of 
+another process, so using _exit in every child process would mean 
+that exit is useless outside of init.
+
+switch (fork()) {
+  case 0:
+    // we're the child
+    execlp("some", "program", NULL);
+    _exit(1);  // <-- HERE
+  case -1:
+    // error, no fork done ...
+  default:
+    // we're the parent ...
+}
+
+The functions exit and _exit are equivalent except that exit calls 
+functions registered by atexit and flushes standard I/O buffers 
+while _exit does not.
+
+===============================================================================
 ► Write a long running program in C. This program should not 
 hog the CPU, use no sleep()/block()/select()/wait(), should not 
 block resources...and should terminate after a very very very 
@@ -23,6 +55,12 @@ with respect to file system,he hinted to super blocks I was not much
 aware of super blocks etc in a file system,then I attempted for 
 VFS kind of thing.
 Sol:
+The vfork() function has the same effect as fork(2), except that 
+the behavior is undefined if the process created by vfork() either 
+modifies any data other than a variable of type pid_t used to store 
+the return value from vfork(), or returns from the function in which 
+vfork() was called, or calls any other function before successfully 
+calling _exit(2) or one of the exec(3) family of functions.
     
 ===============================================================================
 ► 
