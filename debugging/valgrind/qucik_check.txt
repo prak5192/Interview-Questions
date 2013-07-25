@@ -1,0 +1,5 @@
+valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-callers=16 --leak-resolution=high ./yourprogram args
+
+--db-attach=<yes|no> [default: no]
+  When enabled, Valgrind will pause after every error 
+  shown and print the line:
