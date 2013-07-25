@@ -3,6 +3,17 @@ http://www.globalguideline.com/forum/viewtopic.php?id=365
 http://interviewquestionsanswers.org/forum/topic-1025-socket-programming-interview-questions-and-answers-page-1.html
 http://interviewstar.blogspot.in/2010/08/socket-programming-interview-questions.html
 ================================================================================
+►What is urget pointer in TCP/IP header? 
+Sol:
+The Urgent Pointer is used when some information has to reach the server ASAP. 
+When the TCP/IP stack at the other end sees a packet using the Urgent Pointer, 
+it is duty bound to stop all it's doing and immediately send this packet to 
+the relevant server. Since the packet is plucked out of the processing 
+queue and acted upon immediately, it is known as an Out Of Band (OOB) packet 
+and the data is called Out Of Band (OOB) data. The Urgent Pointer is usually 
+used in Telnet, where an immediate response (e.g. the echoing of characters) 
+is desirable. 
+================================================================================
 ► What are the different states of TCP/IP connection?
 Sol: There are total 11 different states of TCP/IP connection:
 1.  SYN_SEND Indicates active open.
