@@ -37,7 +37,7 @@ High address
           |    BSS           | Uninitialized data segement
           |                  |
           --------------------
-          |                  | Initialized data
+          |                  | Initialized data segement
           |                  |
           --------------------
           |                  | Text Segment
