@@ -63,8 +63,7 @@ vfork() was called, or calls any other function before successfully
 calling _exit(2) or one of the exec(3) family of functions.
     
 ===============================================================================
-► 
-What is the difference between spin lock, mutex,semaphore.
+►What is the difference between spin lock, mutex,semaphore.
 I was clear on this answer but then he asked for a real 
 example of mutex.
 
@@ -104,6 +103,9 @@ does the kernel implements them and what happens when a user space
 program uses open(file,r) like this with arguments,how does kernel 
 implement it.
 Sol:
+http://www.linux.it/~rubini/docs/ksys/
+http://people.ee.ethz.ch/~arkeller/linux/kernel_user_space_howto.html
+
 
 
 
