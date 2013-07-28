@@ -1,0 +1,47 @@
+► What is sunbet?
+Sol:
+    An IP address has two components, the network address and the 
+host address. A subnet mask separates the IP address into the network 
+and host addresses (<network><host>). Subnetting further divides the 
+host part of an IP address into a subnet and host address 
+(<network><subnet><host>). It is called a subnet mask because it is 
+used to identify network address of an IP address by perfoming 
+bitwise AND operation on the netmask.
+
+A Subnet mask is a 32-bit number that masks an IP address, and divides 
+the IP address into network address and host address. Subnet Mask is 
+made by setting network bits to all "1"s and setting host bits to 
+all "0"s. Within a given network, two host addresses are reserved for 
+special purpose. The "0" address is assigned a network address and 
+"255" is assigned to a broadcast address, and they cannot be assigned 
+to a host. 
+Link:
+http://www.iplocation.net/tools/netmask.php
+
+==============================================================================
+► What is the classes of IP?
+Sol:
+    
+Link:
+http://www.vlsm-calc.net/ipclasses.php
+ 
+==============================================================================
+► 
+==============================================================================
+► 
+==============================================================================
+► 
+==============================================================================
+► 
+==============================================================================
+► 
+==============================================================================
+► 
+==============================================================================
+► 
+==============================================================================
+► 
+==============================================================================
+► 
+=============================================================================
+► 
