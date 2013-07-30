@@ -1,0 +1,42 @@
+1. Print pascal triangle?
+    pascal_triangle.c
+
+2. Delete a node in a linked list
+    delete_a_given_node_in_linked_list_todo.c
+
+3. Find 3rd element from last in a linked list.
+    find_3rd_element_from_last_in_singly_linked_list.c
+
+4. Convert a decimal number into binary number in C.
+    decimal_2_binary.c
+
+5. Convert a little endian to big endian integer.
+    little_bigendian.c
+
+6. What is the significance of # and ## in C?
+    preprocessor_symobles.c
+
+7. What are the different scanf formates?
+    scanf_formates.c
+
+8. Write a program to implement your own sizeof operator.
+    sizeof_implementation.c
+
+9. Sort a linked list.
+    sorted_linked_list_todo.c
+
+10. Implement your own strstr fucntion in C?
+    strstr_implementation.c
+
+11. Swap nodes os a linked list.
+    swap_nodes_linked_list.c
+
+12. Implement a stack from two queue in C.
+    two_queue_stack.c
+
+13. Print all permutation of a given number.
+    print_all_permutaion_of_a_given_string.c
+
+14. Find middle of a linked list in one pass.
+    find_middle_of_linked_list_in_1_pass.c
+ 
