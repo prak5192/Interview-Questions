@@ -60,12 +60,13 @@ list                  Lists next few lines of program
 ===========================================================
 8. Execute until a line number 
 ===========================================================
-until <line>          Executes program until line number <line>
+until <line>     Executes program until line number <line>
 
 ===========================================================
 9.Print info of local variables in current stack frame.
 ===========================================================
 info locals
+
 
 ===========================================================
 10.Set the value of a local variable
@@ -101,3 +102,64 @@ the info commands do:
 #info threads., a command to inquire about existing threads
 (gdb) info threads
 (gdb) thread 1
+
+===========================================================
+Set breakpoint by linu num:
+===========================================================
+ (gdb) break linenum/function_name
+
+===========================================================
+To print all the breakpoints:
+===========================================================
+ (gdb) i b 
+
+===========================================================
+Get the type of the variable 
+===========================================================
+ (gdb) whatis  varibale_name
+    eg: (gdb) whatis lDepth 
+         type = int 
+         
+===========================================================
+Get the value of the local variables
+===========================================================
+ (gdb) info local
+    eg: (gdb) info local
+        lDepth = 0 
+        rDepth = 0 
+===========================================================
+Get the type of the variable
+===========================================================
+ (gdb) ptype varibale_struct
+    eg: ptype node
+    type = struct node {
+        int data;
+        struct node *left;
+        struct node *right;
+    } * 
+
+===========================================================
+Get the filename and language of the executable   
+===========================================================
+ (gdb) info source
+
+===========================================================
+Continue running until just after function in the selected 
+stack frame returns.
+===========================================================
+ (gdb) finish
+
+===========================================================
+Get all the function calls made till a point
+===========================================================
+    (gdb) bt
+    (gdb) where
+===========================================================
+Remove the breakpoint  by numbers
+===========================================================
+ (gdb) delete    
+===========================================================
+Terminate the program
+===========================================================
+ (gdb) kill
+
