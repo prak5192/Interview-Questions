@@ -1,42 +1,95 @@
-1. Print pascal triangle?
+===============================================================================
+► Print pascal triangle?
+Sol:
     pascal_triangle.c
-
-2. Delete a node in a linked list
+===============================================================================
+► Delete a node in a linked list
+Sol:
     delete_a_given_node_in_linked_list_todo.c
 
-3. Find 3rd element from last in a linked list.
+===============================================================================
+► Find 3rd element from last in a linked list.
+Sol:
     find_3rd_element_from_last_in_singly_linked_list.c
 
-4. Convert a decimal number into binary number in C.
+===============================================================================
+► Convert a decimal number into binary number in C.
+Sol:
     decimal_2_binary.c
 
-5. Convert a little endian to big endian integer.
+===============================================================================
+► Convert a little endian to big endian integer.
+Sol:
     little_bigendian.c
-
-6. What is the significance of # and ## in C?
+===============================================================================
+► What is the significance of # and ## in C?
+Sol:
     preprocessor_symobles.c
-
-7. What are the different scanf formates?
+===============================================================================
+► What are the different scanf formates?
+Sol
     scanf_formates.c
 
-8. Write a program to implement your own sizeof operator.
+===============================================================================
+► Write a program to implement your own sizeof operator.
+Sol:
     sizeof_implementation.c
 
-9. Sort a linked list.
+===============================================================================
+► Sort a linked list.
+Sol:
     sorted_linked_list_todo.c
 
-10. Implement your own strstr fucntion in C?
+===============================================================================
+► Implement your own strstr fucntion in C?
+Sol:
     strstr_implementation.c
 
-11. Swap nodes os a linked list.
+===============================================================================
+► Swap nodes os a linked list.
+Sol:
     swap_nodes_linked_list.c
 
-12. Implement a stack from two queue in C.
+===============================================================================
+► Implement a stack from two queue in C.
+Sol:
     two_queue_stack.c
 
-13. Print all permutation of a given number.
+===============================================================================
+► Print all permutation of a given number.
+Sol:
     print_all_permutaion_of_a_given_string.c
 
-14. Find middle of a linked list in one pass.
+===============================================================================
+► Find middle of a linked list in one pass.
+Sol:
     find_middle_of_linked_list_in_1_pass.c
- 
+
+===============================================================================
+► Convert a binary tree into doubly linked list.
+Sol:
+    convert_a_binary_tree_into_doubly_linked_list.c 
+
+===============================================================================
+► Describe the memory layout of a C program?
+Sol:
+    memory_layout_for_C_program.txt 
+    
+===============================================================================
+► Remove all duplicates froma given string
+Sol:
+    remove_all_duplicates_from_a_given_string.c 
+
+===============================================================================
+► Traverse a binary tree without using recursion?
+Sol:
+    tree_traversal_without_using_recursion.c
+
+===============================================================================
+► How can I find the day of a given week?
+Sol:
+    How can I find the day of a given week
+
+===============================================================================
+►
+    
