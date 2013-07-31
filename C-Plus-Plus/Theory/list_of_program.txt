@@ -34,5 +34,46 @@ of a class in C++. These factors are:
 http://www.cprogramming.com/tutorial/size_of_class_object.html
 
 ===============================================================================
-► 
+► How can you call a C function from a C++ code?
+Sol:
+     In order to call a C function from C++ code, you would 
+use the “extern “C”” keyword when declaring the function in C. 
+Then, you would call the function just like you would call any 
+other function. An example will help clarify this:
+
+/*this is what the C++ code would look like
+   for the declaration of the foo function, which 
+   is defined somewhere else in C code: */
+
+extern "C" void foo( ); 
+
+If you have more than one C functions that you would like to 
+call from your C++ code, then it would be best to group them and 
+declare them like this:
+
+/* this is inside the C++ code,
+     if we want to access multiple C functions
+     from C++ then we can declare them like this:
+*/
+extern "C" {    
+    int foo( );
+    double foobar();
+};  
+
+===============================================================================
+► What are the benefits of using exceptions in C++?
+Sol:
+    Possibly an obvious point - a developer can ignore (or not 
+be aware of) your return status and go on blissfully unaware 
+that something failed.
+
+An exception needs to be acknowledged in some way - it can't be 
+silently ignored without actively putting something in place to 
+do so.
+
+===============================================================================
+► What is a convserion constructor in c++?
+Sol:
+    conversion_constructor.cpp
+
 
