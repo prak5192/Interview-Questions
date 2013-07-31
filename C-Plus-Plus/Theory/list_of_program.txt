@@ -1,0 +1,38 @@
+===============================================================================
+► What is difference between constructor and distructor?
+Sol:
+    1. Constructor is used to initialize the instance of a class 
+whereas a destructor destroys the objects when they are no longer 
+in use.
+    2. Contructor allocates the meomry, wheras destroctor 
+release the memory.
+    3. Overloading of constroctor is possible whereas destroctor 
+cannot be overloaded.
+    4. Constroctor has same name of the class where as Destructor 
+also has the same name of the class but with the ~ (tiled operation) 
+
+===============================================================================
+► How do you differentiate between aggregation and association?
+Sol:
+    Have to find 
+
+===============================================================================
+► What are the factors deciding the size of a class in C++?
+Sol:
+    There are many factors that decide the size of an object 
+of a class in C++. These factors are:
+
+1. Size of all non-static data members
+2. Order of data members
+3. Byte alignment or byte padding
+4. Size of its immediate base class
+5. The existence of virtual function(s) (Dynamic polymorphism 
+   using virtual functions).
+6. Compiler being used
+7. Mode of inheritance (virtual inheritance)
+
+http://www.cprogramming.com/tutorial/size_of_class_object.html
+
+===============================================================================
+► 
+
