@@ -76,4 +76,10 @@ do so.
 Sol:
     conversion_constructor.cpp
 
+===============================================================================
+► What is copy constructor?
+Sol:
+    http://www.codeproject.com/Tips/78946/C-Copy-Constructor-in-depth
+    copy_constructor.cpp
+ 
 
