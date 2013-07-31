@@ -81,7 +81,7 @@ Sol:
 Sol:
     http://www.codeproject.com/Tips/78946/C-Copy-Constructor-in-depth
     copy_constructor.cpp
- ===============================================================================
+===============================================================================
 ►  What is pure virtual function?
            or
    Why a class have pure virtual function?
@@ -95,4 +95,18 @@ speed is not at a premium
 5. To maximize the execution speed of the function provided that 
 memory is not at a premium
 
+===============================================================================
+► What is the difference between overloading and overriding?
+Sol:
+    In overloading a new functionality is added to the current 
+configuration of the function, let be operator in this case (say ‘+’)
+.There is already a functionality that adds two integers or two 
+floats etc. But there is no provision of adding two objects. this 
+provision can be added using operator overloading.
 
+in case of overriding you change the whole function. for ex. you 
+have a base class with a function eat(). In the derived class you 
+define another function with the same name eat(). thus the behavious 
+of base class’ eat() is overridden by the derived class’eat(). the 
+old functionality never comes into picture. the new functionality 
+never complements the old eat(). 
