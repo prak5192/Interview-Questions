@@ -1,2 +1,9 @@
 ===============================================================================
-►  
+► What is conversion constructor?
+Sol:
+    conversion_constructor.cpp 
+===============================================================================
+► What is copy constructor? 
+Sol:
+    copy_constructor.cpp
+
