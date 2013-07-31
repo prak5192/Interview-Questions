@@ -1,4 +1,342 @@
 ===============================================================================
+► When do we pass arguments by reference or pointer?
+Sol:
+    In C++, variables are passed by reference due to following reasons:
+
+1) To modify local variables of the caller function: A reference 
+(or pointer) allows called function to modify a local variable of 
+the caller function. For example, consider the following example 
+program where fun() is able to modify local variable x of main().
+
+void fun(int &x) {
+    x = 20;
+}
+ 
+int main() {
+    int x = 10;
+    fun(x);
+    cout<<"New value of x is "<<x;
+    return 0;
+}
+
+Output:
+New value of x is 20
+
+
+2) For passing large sized arguments: If an argument is large, 
+passing by reference (or pointer) is more efficient because only 
+an address is really passed, not the entire object. For example, 
+let us consider the following Employee class and a function 
+printEmpDetails() that prints Employee details.
+
+class Employee {
+private:
+    string name;
+    string desig;
+ 
+    // More attributes and operations
+};
+ 
+void printEmpDetails(Employee emp) {
+     cout<<emp.getName();
+     cout<<emp.getDesig();
+ 
+    // Print more attributes
+}
+
+The problem with above code is: every time printEmpDetails() 
+is called, a new Employee abject is constructed that involves 
+creating a copy of all data members. So a better implementation 
+would be to pass Employee as a reference.
+
+void printEmpDetails(const Employee &emp) {
+     cout<<emp.getName();
+     cout<<emp.getDesig();
+ 
+    // Print more attributes
+}
+
+This point is valid only for struct and class variables as we don’t 
+get any efficiency advantage for basic types like int, char.. etc.
+
+
+3) To avoid Object Slicing: If we pass an object of subclass to a 
+function that expects an object of superclass then the passed 
+object is sliced if it is pass by value. For example, consider the 
+following program, it prints “This is Pet Class”.
+
+#include <iostream>
+#include<string>
+ 
+using namespace std;
+ 
+class Pet {
+public:
+    virtual string getDescription() const {
+        return "This is Pet class";
+    }
+};
+ 
+class Dog : public Pet {
+public:
+    virtual string getDescription() const {
+        return "This is Dog class";
+    }
+};
+ 
+void describe(Pet p) { // Slices the derived class object
+    cout<<p.getDescription()<<endl;
+}
+ 
+int main() {
+    Dog d;
+    describe(d);
+    return 0;
+}
+
+Output:
+This is Pet Class
+
+If we use pass by reference in the above program then it correctly 
+prints “This is Dog Class”. See the following modified program.
+
+#include <iostream>
+#include<string>
+ 
+using namespace std;
+ 
+class Pet {
+public:
+    virtual string getDescription() const {
+        return "This is Pet class";
+    }
+};
+ 
+class Dog : public Pet {
+public:
+    virtual string getDescription() const {
+        return "This is Dog class";
+    }
+};
+ 
+void describe(const Pet &p) { // Doesn't slice the derived class object.
+    cout<<p.getDescription()<<endl;
+}
+ 
+int main() {
+    Dog d;
+    describe(d);
+    return 0;
+}
+
+Output:
+This is Dog Class
+
+This point is also not valid for basic data types like int, char, .. etc.
+
+
+4) To achieve Run Time Polymorphism in a function
+We can make a function polymorphic by passing objects as reference 
+(or pointer) to it. For example, in the following program, print() receives 
+a reference to the base class object. print() calls the base class 
+function show() if base class object is passed, and derived class function 
+show() if derived class object is passed.
+
+#include<iostream>
+using namespace std;
+ 
+class base {
+public:
+    virtual void show() {  // Note the virtual keyword here
+        cout<<"In base \n";
+    }
+};
+ 
+ 
+class derived: public base {
+public:
+    void show() {
+        cout<<"In derived \n";
+    }
+};
+ 
+// Since we pass b as reference, we achieve run time polymorphism here.
+void print(base &b) {
+    b.show();
+}
+ 
+int main(void) {
+    base b;
+    derived d;
+    print(b);
+    print(d);
+    return 0;
+}
+
+Output:
+In base
+In derived
+
+As a side note, it is a recommended practice to make reference arguments 
+const if they are being passed by reference only due to reason no. 2 or 3 
+mentioned above. This is recommended to avoid unexpected modifications 
+to the objects.
+
+
+===============================================================================
+► Can reference refer to invalid location in C++?
+Sol:
+    In C++, Reference variables are safer than pointers because reference 
+variables must be initialized and they cannot be changed to refer to 
+something else once they are initialized. But there are exceptions where 
+we can have invalid references.
+
+1) Reference to value at uninitialized pointer.
+int *ptr;
+int &ref = *ptr;  // Reference to value at some random memory location
+
+2) Reference to a local variable is returned.
+int& fun()
+{
+   int a = 10;
+   return a;
+}
+
+Once fun() returns, the space allocated to it on stack frame will be 
+taken back. So the reference to a local variable will not be valid. 
+
+===============================================================================
+► Can a C++ class have an object of self type?
+Sol:
+    A class declaration can contain static object of self type, 
+it can also have pointer to self type, but it cannot have a 
+non-static object of self type.
+
+For example, following program works fine.
+// A class can have a static member of self type
+
+#include<iostream>
+ 
+using namespace std;
+ 
+class Test {
+  static Test self;  // works fine
+ 
+  /* other stuff in class*/
+ 
+};
+ 
+int main()
+{
+  Test t;
+  getchar();
+  return 0;
+}
+
+And following program also works fine.
+// A class can have a pointer to self type
+#include<iostream>
+ 
+using namespace std;
+ 
+class Test {
+  Test * self; //works fine
+ 
+  /* other stuff in class*/
+ 
+};
+ 
+int main()
+{
+  Test t;
+  getchar();
+  return 0;
+}
+
+But following program generates compilation error “field 
+`self’ has incomplete type”
+
+// A class cannot have non-static object(s) of self type.
+#include<iostream>
+ 
+using namespace std;
+ 
+class Test {
+  Test self; // Error
+ 
+  /* other stuff in class*/
+ 
+};
+ 
+int main()
+{
+  Test t;
+  getchar();
+  return 0;
+}
+
+If a non-static object is member then declaration of class is 
+incomplete and compiler has no way to find out size of the objects 
+of the class.
+Static variables do not contribute to the size of objects. So no 
+problem in calculating size with static variables of self type.
+For a compiler, all pointers have a fixed size irrespective of 
+the data type they are pointing to, so no problem with this also.
+
+===============================================================================
+► Why is the size of the empty class is not zero in C++?
+Sol:
+    Size of an empty class is not zero. It is 1 byte generally. 
+It is nonzero to ensure that the two different objects will have 
+different addresses. See the following example.
+
+
+#include<iostream>
+using namespace std;
+ 
+class Empty { };
+ 
+int main()
+{
+    Empty a, b;
+ 
+    if (&a == &b)
+      cout << "impossible " << endl;
+    else
+      cout << "Fine " << endl;
+ 
+   return 0;
+}
+
+Output:
+
+Fine
+
+For the same reason (different objects should have different addresses), 
+“new” always returns pointers to distinct objects. See the following example.
+
+#include<iostream>
+using namespace std;
+ 
+class Empty { };
+ 
+int main()
+{
+    Empty* p1 = new Empty;
+    Empty* p2 = new Empty;
+ 
+    if (p1 == p2)
+        cout << "impossible " << endl;
+    else
+        cout << "Fine " << endl;
+ 
+    return 0;
+}
+
+Output:
+Fine
+ 
+===============================================================================
 ► What is difference between constructor and distructor?
 Sol:
     1. Constructor is used to initialize the instance of a class 
@@ -110,3 +448,273 @@ define another function with the same name eat(). thus the behavious
 of base class’ eat() is overridden by the derived class’eat(). the 
 old functionality never comes into picture. the new functionality 
 never complements the old eat(). 
+
+===============================================================================
+► Can namespace be nested?
+Sol:
+    In C++, namespaces can be nested, and resolution of namespace 
+variables is hierarchical. For example, in the following code, 
+namespace inner is created inside namespace outer, which is inside the 
+global namespace. In the line “int z = x”, x refers to outer::x. 
+If x would not have been in outer then this x would have referred 
+to x in global namespace.
+
+#include <iostream>
+ 
+int x = 20;
+namespace outer {
+  int x = 10;        
+  namespace inner {
+    int z = x; // this x refers to outer::x
+  }
+}
+ 
+int main()
+{
+  std::cout<<outer::inner::z; //prints 10
+  getchar();
+  return 0;
+}
+
+Output of the above program is 10. 
+
+===============================================================================
+► Type difference of character literals in C and C++ ?
+Sol:
+    Every literal (constant) in C/C++ will have a type information 
+associated with it.
+In both C and C++, numeric literals (e.g. 10) will have int as 
+their type. It means sizeof(10) and sizeof(int) will return same value.
+
+However, character literals (e.g. ‘V’) will have different types, 
+sizeof(‘V’) returns different values in C and C++. In C, a character 
+literal is treated as int type where as in C++, a character literal is 
+treated as char type (sizeof(‘V’) and sizeof(char) are same in C++ 
+but not in C).
+
+int main()
+{
+   printf("sizeof('V') = %d sizeof(char) = %d", sizeof('V'), sizeof(char));
+   return 0;
+}
+
+Result of above program:
+
+C result – sizeof(‘V’) = 4 sizeof(char) = 1
+C++ result – sizeof(‘V’) = 1 sizeof(char) = 1
+
+Such behaviour is required in C++ to support function overloading. 
+An example will make it more clear. Predict the output of the following 
+C++ program.
+
+void foo(char c)
+{
+   printf("From foo: char");
+}
+
+void foo(int i)
+{
+   printf("From foo: int");
+}
+ 
+int main()
+{
+   foo('V');
+   return 0;
+}
+
+The compiler must call
+void foo(char);
+
+since ‘V’ type is char. 
+
+===============================================================================
+► Templates and default arguments?
+Sol:
+    Like function default arguments, templates can also have default 
+arguments. For example, in the following program, the second 
+parameter U has the default value as char.
+
+#include<iostream>
+using namespace std;
+ 
+template<class T, class U = char> class A
+{
+public:
+    T x;
+    U y;
+};
+ 
+int main()
+{
+    A<char> a;
+    A<int, int> b;
+    cout<<sizeof(a)<<endl;
+    cout<<sizeof(b)<<endl;
+    return 0;
+}
+
+Output: (char takes 1 byte and int takes 4 bytes)
+2
+8
+
+Also, similar to default function arguments, if one template parameter 
+has a default argument, then all template parameters following it must 
+also have default arguments. For example, the compiler will not allow 
+the following program:
+
+#include<iostream>
+using namespace std;
+ 
+template<class T = char, class U, class V = int> class A  // Error
+{
+   // members of A
+};
+ 
+int main()
+{
+   
+}
+
+===============================================================================
+►  Template metaprogramming in C++?
+Sol:
+    Predict the output of following C++ program.
+#include <iostream>
+using namespace std;
+ 
+template<int n> struct funStruct
+{
+    enum { val = 2*funStruct<n-1>::val };
+};
+ 
+template<> struct funStruct<0>
+{
+    enum { val = 1 };
+};
+ 
+int main()
+{
+    cout << funStruct<8>::val << endl;
+    return 0;
+}
+
+Output:
+
+256
+
+The program calculates “2 raise to the power 8 (or 2^8)”. In fact, 
+the structure funStruct can be used to calculate 2^n for any known n 
+(or constant n). The special thing about above program is: calculation 
+is done at compile time. So, it is compiler that calculates 2^8. 
+To understand how compiler does this, let us consider the following 
+facts about templates and enums:
+
+1) We can pass nontype parameters (parameters that are not data types) 
+to class/function templates.
+2) Like other const expressions, values of enumaration constants are 
+evaluated at compile time.
+3) When compiler sees a new argument to a template, compiler 
+creates a new instance of the template.
+
+Let us take a closer look at the original program. When compiler sees 
+
+funStruct<8>::val, it tries to create an instance of funStruct with 
+parameter as 8, it turns out that funStruct<7> must also be created 
+as enumaration constant val must be evaluated at compile time. 
+For funStruct<7>, compiler need funStruct<6> and so on. Finally, 
+compiler uses funStruct<1>::val and compile time recursion terminates. 
+So, using templates, we can write programs that do computation at 
+compile time, such programs are called template metaprograms. 
+Template metaprogramming is in fact Turing-complete, meaning that 
+any computation expressible by a computer program can be computed, 
+in some form, by a template metaprogram. Template Metaprogramming 
+is generally not used in practical programs, it is an interesting 
+conecpt though.    
+
+===============================================================================
+► Templates with static variables in C++?
+Sol:
+    Function templates and static variables:
+===============================================
+Each instantiation of function template has its own copy of local 
+static variables. For example, in the following program there are 
+two instances: void fun(int ) and void fun(double ). 
+So two copies of static variable i exist.
+
+#include <iostream>
+ 
+using namespace std;
+ 
+template <typename T>
+void fun(const T& x)
+{
+  static int i = 10;
+  cout << ++i;
+  return;
+}
+ 
+int main()
+{   
+  fun<int>(1);  // prints 11
+  cout << endl;
+  fun<int>(2);  // prints 12
+  cout << endl;
+  fun<double>(1.1); // prints 11
+  cout << endl;
+  getchar();
+  return 0;
+}
+
+Output of the above program is:
+
+  11
+  12
+  11
+
+Class templates and static variables:
+========================================
+The rule for class templates is same as function templates
+Each instantiation of class template has its own copy of member 
+static variables. For example, in the following program there are 
+two instances Test and Test. So two copies of static variable count exist.
+
+#include <iostream>
+ 
+using namespace std;
+ 
+template <class T> class Test
+{ 
+private:
+  T val;
+public:
+  static int count;
+  Test()
+  {
+    count++;
+  }
+  // some other stuff in class
+};
+ 
+template<class T>
+int Test<T>::count = 0;
+ 
+int main()
+{
+  Test<int> a;  // value of count for Test<int> is 1 now
+  Test<int> b;  // value of count for Test<int> is 2 now
+  Test<double> c;  // value of count for Test<double> is 1 now
+  cout << Test<int>::count   << endl;  // prints 2 
+  cout << Test<double>::count << endl; //prints 1
+    
+  getchar();
+  return 0;
+}
+
+Output of the above program is:
+
+  2
+  1
+
+===============================================================================
+► 
