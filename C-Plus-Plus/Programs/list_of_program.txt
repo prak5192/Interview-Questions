@@ -7,3 +7,9 @@ Sol:
 Sol:
     copy_constructor.cpp
 
+===============================================================================
+► What is pure virtual function?
+Sol:
+    pure_vitual_function.cpp
+ 
+    

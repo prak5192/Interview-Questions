@@ -81,5 +81,18 @@ Sol:
 Sol:
     http://www.codeproject.com/Tips/78946/C-Copy-Constructor-in-depth
     copy_constructor.cpp
- 
+ ===============================================================================
+►  What is pure virtual function?
+           or
+   Why a class have pure virtual function?
+Sol:
+1. To ensure that this function is overridden in derived classes 
+that are to be instantiated
+2. To allow for templated classes to be used with friend functions
+3. To maximize the memory efficiency provided that execution 
+speed is not at a premium
+4. To maximize code reuse
+5. To maximize the execution speed of the function provided that 
+memory is not at a premium
+
 
