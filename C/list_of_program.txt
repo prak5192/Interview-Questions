@@ -1,4 +1,8 @@
 ===============================================================================
+► Counting set bits in a number in fast method?
+Sol:
+    counting_bits.c 
+===============================================================================
 ► Print pascal triangle?
 Sol:
     pascal_triangle.c
