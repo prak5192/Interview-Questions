@@ -1,0 +1,13 @@
+Q.
+	There are 10 bags each containing 10 balls weighing 10 grams each, 
+but one bag has balls containg 9 grams.We are given 1 rupee coin 
+and allowed to weigh only once. How will we find the odd one out.
+Sol:
+	Label the bags 1 through 10. Take 1 ball from bag 1, label it 1. 
+Take 2 balls from bag 2, label both 2. Take 3 balls from bag 3, 
+label each 3. Take 4 balls from bag 4, label each 4. Continue this 
+with bags 5, 6, 7, 8, 9, and 10. Put all 55 balls on the scale. If 
+all 55 balls weighed 10 grams each, the scale would read 550 grams. 
+Subtract the number on the scale from 550. The answer will tell you 
+the number of the bag with the lighter balls. Example, if the scale 
+reads 547, it's bag #3. If the scale reads 542, it's bag #8.
